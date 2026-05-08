@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Contact SF Tapas — Request a quote for authentic Spanish tapas and paella catering in San Francisco. Private events, corporate catering, weddings and more.">
+<title>Contact & Get a Quote — SF Tapas | Tapas Catering San Francisco</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAF7F2;
+    --charcoal: #1C1917;
+    --deep: #0D0C0A;
+    --gold: #C9972A;
+    --gold-light: #E8C06A;
+    --terracotta: #B85C38;
+    --text-muted: #6B6560;
+    --border: rgba(28,25,23,0.12);
+    --border-focus: #C9972A;
+    --error: #C0392B;
+    --success: #5A8A5E;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --max: 1160px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--warm-white);
+    color: var(--charcoal);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV (identical to index) ─────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 2.5rem;
+    background: rgba(250,247,242,0.97);
+    box-shadow: 0 1px 0 var(--border);
+    backdrop-filter: blur(8px);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .nav-logo-mark { width: 44px; height: 44px; flex-shrink: 0; }
+  .nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
+  .nav-logo-text-top {
+    font-family: var(--font-body);
+    font-size: 0.6rem; font-weight: 400;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .nav-logo-text-bottom {
+    font-family: var(--font-display);
+    font-size: 1.25rem; font-weight: 600;
+    letter-spacing: 0.04em; color: var(--charcoal);
+  }
+  .nav-ring-outer { stroke: #C9972A; }
+  .nav-ring-inner { stroke: rgba(201,151,42,0.28); }
+  .nav-arc-txt    { fill: rgba(201,151,42,0.75); }
+  .nav-rule       { stroke: rgba(201,151,42,0.22); }
+  .nav-sft        { fill: #C9972A; }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem; font-weight: 400;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--text-muted); text-decoration: none;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: var(--deep) !important;
+    padding: 0.6rem 1.4rem !important; border-radius: 2px;
+    font-weight: 500 !important; letter-spacing: 0.04em;
+    transition: background 0.25s, transform 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
+  .nav-hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+  .nav-hamburger span { width: 24px; height: 1.5px; background: var(--charcoal); display: block; }
+
+  /* ── MOBILE NAV ───────────────────────────────── */
+  .mobile-nav {
+    display: none; position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--deep); z-index: 999;
+    flex-direction: column; align-items: center;
+    justify-content: center; gap: 2.5rem;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a {
+    font-family: var(--font-display); font-size: 2.2rem;
+    font-weight: 300; color: rgba(255,255,255,0.8);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .mobile-nav a:hover { color: var(--gold-light); }
+  .mobile-nav-close {
+    position: absolute; top: 1.5rem; right: 2rem;
+    background: none; border: none;
+    color: rgba(255,255,255,0.5); font-size: 1.8rem;
+    cursor: pointer; line-height: 1;
+  }
+
+  /* ── PAGE HEADER ──────────────────────────────── */
+  .page-header {
+    background: var(--charcoal);
+    padding: 9rem 2rem 5rem;
+    text-align: center;
+  }
+  .page-header-eyebrow {
+    display: inline-block;
+    font-size: 0.72rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .page-header h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 5.5vw, 4.4rem);
+    font-weight: 300; color: #fff; line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .page-header h1 em { font-style: italic; color: var(--gold-light); }
+  .page-header p {
+    font-size: 1.05rem; color: rgba(255,255,255,0.55);
+    font-weight: 300; max-width: 520px; margin: 0 auto;
+  }
+
+  /* ── FORM SECTION ─────────────────────────────── */
+  .form-section {
+    padding: 5rem 2rem 7rem;
+    background: var(--warm-white);
+  }
+  .form-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* ── FIELDSET GROUPS ──────────────────────────── */
+  .form-group-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 3rem 0 1.8rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .form-group-header:first-of-type { margin-top: 0; }
+  .form-group-num {
+    font-family: var(--font-display);
+    font-size: 2.2rem; font-weight: 300;
+    color: rgba(28,25,23,0.1); line-height: 1;
+    flex-shrink: 0;
+  }
+  .form-group-label {
+    font-family: var(--font-display);
+    font-size: 1.4rem; font-weight: 400;
+    color: var(--charcoal);
+  }
+
+  /* ── FIELD GRID ───────────────────────────────── */
+  .field-row {
+    display: grid;
+    gap: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+  .field-row.cols-2 { grid-template-columns: 1fr 1fr; }
+  .field-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .field-row.cols-1 { grid-template-columns: 1fr; }
+
+  /* ── INDIVIDUAL FIELD ─────────────────────────── */
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .field label {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .field label .req {
+    color: var(--gold);
+    margin-left: 0.2rem;
+    font-size: 0.9em;
+  }
+  .field input,
+  .field select,
+  .field textarea {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--charcoal);
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 0.78rem 1rem;
+    width: 100%;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .field input::placeholder,
+  .field textarea::placeholder { color: rgba(107,101,96,0.45); }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,151,42,0.12);
+  }
+  .field input.error,
+  .field select.error,
+  .field textarea.error {
+    border-color: var(--error);
+    box-shadow: 0 0 0 3px rgba(192,57,43,0.1);
+  }
+  .field-error {
+    font-size: 0.75rem;
+    color: var(--error);
+    display: none;
+    margin-top: 0.1rem;
+  }
+  .field-error.visible { display: block; }
+  .field textarea { resize: vertical; min-height: 110px; }
+  /* Custom select arrow */
+  .field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6560' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+    cursor: pointer;
+  }
+  /* Budget prefix wrapper */
+  .input-prefix {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .input-prefix::before {
+    content: '$';
+    position: absolute;
+    left: 1rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    pointer-events: none;
+  }
+  .input-prefix input { padding-left: 1.8rem; }
+
+  /* "Other occasion" text reveal */
+  .other-occasion-wrap {
+    display: none;
+    margin-top: 0.8rem;
+  }
+  .other-occasion-wrap.visible { display: block; }
+
+  /* ── HONEYPOT (bot trap) ──────────────────────── */
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    opacity: 0;
+    pointer-events: none;
+    tab-index: -1;
+  }
+
+  /* ── HUMAN CHECK ──────────────────────────────── */
+  .human-check {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 1.6rem 1.8rem;
+    margin: 2.5rem 0;
+  }
+  .human-check-title {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+  .math-challenge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .math-question {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    white-space: nowrap;
+  }
+  .math-input {
+    font-family: var(--font-body) !important;
+    font-size: 1rem !important;
+    width: 90px !important;
+    text-align: center;
+    padding: 0.6rem 0.8rem !important;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .math-input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,151,42,0.12);
+  }
+  .math-input.error { border-color: var(--error); }
+  .human-check-note {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 0.8rem;
+    font-weight: 300;
+  }
+
+  /* ── SUBMIT ───────────────────────────────────── */
+  .form-submit-wrap {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn-submit {
+    background: var(--gold);
+    color: var(--deep);
+    padding: 1rem 2.8rem;
+    border: none;
+    border-radius: 2px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.2s;
+    position: relative;
+  }
+  .btn-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .form-micro {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  /* ── SUCCESS / ERROR BANNERS ──────────────────── */
+  .form-banner {
+    display: none;
+    padding: 1.2rem 1.6rem;
+    border-radius: 2px;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    font-weight: 400;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  .form-banner.visible { display: flex; }
+  .form-banner.success {
+    background: rgba(90,138,94,0.1);
+    border: 1px solid rgba(90,138,94,0.3);
+    color: var(--success);
+  }
+  .form-banner.failure {
+    background: rgba(192,57,43,0.08);
+    border: 1px solid rgba(192,57,43,0.25);
+    color: var(--error);
+  }
+  .banner-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+  /* ── CONTACT INFO SIDEBAR ─────────────────────── */
+  .contact-aside {
+    background: var(--charcoal);
+    padding: 3rem 2rem 5rem;
+  }
+  .contact-aside-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .aside-item { display: flex; flex-direction: column; gap: 0.5rem; }
+  .aside-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+  .aside-value {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.85);
+  }
+  .aside-value a {
+    color: var(--gold-light);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .aside-value a:hover { color: #fff; }
+  .aside-note {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+    font-weight: 300;
+  }
+
+  /* ── FOOTER ───────────────────────────────────── */
+  footer {
+    background: var(--deep);
+    color: rgba(255,255,255,0.45);
+    padding: 3.5rem 2rem;
+  }
+  .footer-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .footer-logo { display: flex; align-items: center; gap: 0.6rem; }
+  .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+  .footer-links a {
+    font-size: 0.78rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: rgba(255,255,255,0.35);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold-light); }
+  .footer-copy { font-size: 0.75rem; }
+
+  /* ── RESPONSIVE ───────────────────────────────── */
+  @media (max-width: 900px) {
+    nav { padding: 0.85rem 1.5rem; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .field-row.cols-2,
+    .field-row.cols-3 { grid-template-columns: 1fr; }
+    .contact-aside-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+    .form-submit-wrap { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 560px) {
+    nav { padding: 0.75rem 1.2rem; }
+    .page-header { padding: 8rem 1.2rem 4rem; }
+    .form-section { padding: 3rem 1.2rem 5rem; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="toggleNav()" aria-label="Close menu">✕</button>
+  <svg width="56" height="56" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:1rem;opacity:0.8" aria-hidden="true">
+    <circle cx="44" cy="44" r="40" fill="none" stroke="#C9972A" stroke-width="1.4"/>
+    <circle cx="44" cy="44" r="35" fill="none" stroke="rgba(201,151,42,0.25)" stroke-width="0.6"/>
+    <path id="mn-top" d="M 9 44 A 35 35 0 0 1 79 44" fill="none"/>
+    <text font-family="'DM Sans',system-ui,sans-serif" font-size="5.8" letter-spacing="1.8" fill="rgba(201,151,42,0.65)">
+      <textPath href="#mn-top" startOffset="50%" text-anchor="middle">SAN FRANCISCO</textPath>
+    </text>
+    <path id="mn-bot" d="M 9 44 A 35 35 0 0 0 79 44" fill="none"/>
+    <text font-family="'DM Sans',system-ui,sans-serif" font-size="5.8" letter-spacing="1.8" fill="rgba(201,151,42,0.65)">
+      <textPath href="#mn-bot" startOffset="50%" text-anchor="middle">CALIFORNIA · EST.</textPath>
+    </text>
+    <text x="44" y="53" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="24" font-weight="600" fill="#C9972A" letter-spacing="0.5">SFT</text>
+  </svg>
+  <a href="index.html" onclick="toggleNav()">Home</a>
+  <a href="index.html#services" onclick="toggleNav()">Services</a>
+  <a href="index.html#packages" onclick="toggleNav()">Packages</a>
+  <a href="index.html#story" onclick="toggleNav()">Our Story</a>
+  <a href="contact.html" onclick="toggleNav()" style="color:var(--gold-light)">Get a Quote</a>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a class="nav-logo" href="index.html" aria-label="SF Tapas — Home">
+    <svg class="nav-logo-mark" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="44" cy="44" r="40" fill="none" stroke-width="1.4" class="nav-ring-outer"/>
+      <circle cx="44" cy="44" r="35" fill="none" stroke-width="0.6" class="nav-ring-inner"/>
+      <path id="nav-arc-top" d="M 9 44 A 35 35 0 0 1 79 44" fill="none"/>
+      <text font-family="'DM Sans',system-ui,sans-serif" font-size="5.8" font-weight="400" letter-spacing="1.8" class="nav-arc-txt">
+        <textPath href="#nav-arc-top" startOffset="50%" text-anchor="middle">SAN FRANCISCO</textPath>
+      </text>
+      <path id="nav-arc-bot" d="M 9 44 A 35 35 0 0 0 79 44" fill="none"/>
+      <text font-family="'DM Sans',system-ui,sans-serif" font-size="5.8" font-weight="400" letter-spacing="1.8" class="nav-arc-txt">
+        <textPath href="#nav-arc-bot" startOffset="50%" text-anchor="middle">CALIFORNIA · EST.</textPath>
+      </text>
+      <line x1="14" y1="37" x2="31" y2="37" stroke-width="0.5" class="nav-rule"/>
+      <line x1="57" y1="37" x2="74" y2="37" stroke-width="0.5" class="nav-rule"/>
+      <line x1="14" y1="51" x2="31" y2="51" stroke-width="0.5" class="nav-rule"/>
+      <line x1="57" y1="51" x2="74" y2="51" stroke-width="0.5" class="nav-rule"/>
+      <text x="44" y="53" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif"
+            font-size="24" font-weight="600" letter-spacing="0.5" class="nav-sft">SFT</text>
+    </svg>
+    <span class="nav-logo-text">
+      <span class="nav-logo-text-top">San Francisco</span>
+      <span class="nav-logo-text-bottom">Tapas</span>
+    </span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#experience">Experience</a></li>
+    <li><a href="index.html#packages">Packages</a></li>
+    <li><a href="index.html#story">Our Story</a></li>
+    <li><a href="contact.html" class="nav-cta active">Get a Quote</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="toggleNav()" aria-label="Open menu" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <span class="page-header-eyebrow">Let's Make It Happen</span>
+  <h1>Plan Your <em>Spanish</em><br>Culinary Experience</h1>
+  <p>Tell us about your event and we'll craft a catering experience around your guests, your space, and your vision. We typically respond within a few hours.</p>
+</header>
+
+<!-- FORM SECTION -->
+<section class="form-section">
+  <div class="form-wrap">
+
+    <!-- Success banner -->
+    <div class="form-banner success" id="bannerSuccess" role="alert" aria-live="polite">
+      <span class="banner-icon">✓</span>
+      <div>
+        <strong>Message sent!</strong> Thank you — we'll be in touch within a few hours at the email address you provided.
+      </div>
+    </div>
+
+    <!-- Error banner -->
+    <div class="form-banner failure" id="bannerError" role="alert" aria-live="polite">
+      <span class="banner-icon">!</span>
+      <div id="bannerErrorText">Something went wrong. Please check the fields below and try again.</div>
+    </div>
+
+    <form id="contactForm" novalidate>
+
+      <!-- Honeypot — invisible to humans, bots fill it in -->
+      <div class="hp-field" aria-hidden="true">
+        <label for="website">Leave this blank</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off"/>
+      </div>
+
+      <!-- ── GROUP 1: WHO YOU ARE ── -->
+      <div class="form-group-header">
+        <span class="form-group-num">01</span>
+        <span class="form-group-label">About You</span>
+      </div>
+
+      <div class="field-row cols-2">
+        <div class="field">
+          <label for="fullName">Full Name <span class="req" aria-label="required">*</span></label>
+          <input type="text" id="fullName" name="fullName"
+                 placeholder="Jane Smith"
+                 autocomplete="name" required/>
+          <span class="field-error" id="err-fullName">Please enter your full name.</span>
+        </div>
+        <div class="field">
+          <label for="company">Company / Organisation</label>
+          <input type="text" id="company" name="company"
+                 placeholder="Acme Corp (optional)"
+                 autocomplete="organization"/>
+        </div>
+      </div>
+
+      <div class="field-row cols-2">
+        <div class="field">
+          <label for="email">Email Address <span class="req" aria-label="required">*</span></label>
+          <input type="email" id="email" name="email"
+                 placeholder="jane@example.com"
+                 autocomplete="email" required/>
+          <span class="field-error" id="err-email">Please enter a valid email address.</span>
+        </div>
+        <div class="field">
+          <label for="phone">Phone Number <span class="req" aria-label="required">*</span></label>
+          <input type="tel" id="phone" name="phone"
+                 placeholder="(415) 555-0000"
+                 autocomplete="tel" required/>
+          <span class="field-error" id="err-phone">Please enter a phone number.</span>
+        </div>
+      </div>
+
+      <div class="field-row cols-1">
+        <div class="field">
+          <label for="howHeard">How did you hear about us?</label>
+          <select id="howHeard" name="howHeard">
+            <option value="" disabled selected>Select one…</option>
+            <option value="search">Search Engine</option>
+            <option value="social">Social Media</option>
+            <option value="newsletter">Newsletter</option>
+            <option value="word">Word of Mouth</option>
+            <option value="existing">Existing Customer</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ── GROUP 2: YOUR EVENT ── -->
+      <div class="form-group-header">
+        <span class="form-group-num">02</span>
+        <span class="form-group-label">Your Event</span>
+      </div>
+
+      <div class="field-row cols-1">
+        <div class="field">
+          <label for="occasion">Type of Occasion <span class="req" aria-label="required">*</span></label>
+          <select id="occasion" name="occasion" required>
+            <option value="" disabled selected>Select the type of event…</option>
+            <option value="Anniversary">Anniversary</option>
+            <option value="Baby Shower">Baby Shower</option>
+            <option value="Bachelor Party">Bachelor Party</option>
+            <option value="Bachelorette Party">Bachelorette Party</option>
+            <option value="Bar Mitzvah">Bar Mitzvah</option>
+            <option value="Bat Mitzvah">Bat Mitzvah</option>
+            <option value="Birthday">Birthday</option>
+            <option value="Bridal Shower">Bridal Shower</option>
+            <option value="Corporate Function">Corporate Function</option>
+            <option value="Christening">Christening</option>
+            <option value="Divorce Party">Divorce Party</option>
+            <option value="Family &amp; Friends Reunion">Family &amp; Friends Reunion</option>
+            <option value="Holiday Party">Holiday Party</option>
+            <option value="Quinceañera">Quinceañera</option>
+            <option value="Rehearsal Dinner">Rehearsal Dinner</option>
+            <option value="Memorial Service Reception">Memorial Service Reception</option>
+            <option value="Retirement Party">Retirement Party</option>
+            <option value="Wedding">Wedding</option>
+            <option value="Other">Other (please specify)</option>
+          </select>
+          <span class="field-error" id="err-occasion">Please select the type of occasion.</span>
+          <!-- Revealed when "Other" is selected -->
+          <div class="other-occasion-wrap" id="otherOccasionWrap">
+            <input type="text" id="otherOccasion" name="otherOccasion"
+                   placeholder="Please describe your occasion…"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-row cols-3">
+        <div class="field">
+          <label for="eventDate">Date of Event <span class="req" aria-label="required">*</span></label>
+          <input type="date" id="eventDate" name="eventDate" required/>
+          <span class="field-error" id="err-eventDate">Please select a date.</span>
+        </div>
+        <div class="field">
+          <label for="eventTime">Time of Event <span class="req" aria-label="required">*</span></label>
+          <input type="time" id="eventTime" name="eventTime" required/>
+          <span class="field-error" id="err-eventTime">Please select a time.</span>
+        </div>
+        <div class="field">
+          <label for="guestCount">Number of Guests <span class="req" aria-label="required">*</span></label>
+          <input type="number" id="guestCount" name="guestCount"
+                 placeholder="e.g. 40" min="2" required/>
+          <span class="field-error" id="err-guestCount">Please enter a guest count of at least 2.</span>
+        </div>
+      </div>
+
+      <div class="field-row cols-1">
+        <div class="field">
+          <label for="location">Event Location <span class="req" aria-label="required">*</span></label>
+          <input type="text" id="location" name="location"
+                 placeholder="Full address, venue name, or landmark — e.g. Dolores Park, SF"
+                 autocomplete="street-address" required/>
+          <span class="field-error" id="err-location">Please enter the event location.</span>
+        </div>
+      </div>
+
+      <!-- ── GROUP 3: BUDGET & DETAILS ── -->
+      <div class="form-group-header">
+        <span class="form-group-num">03</span>
+        <span class="form-group-label">Budget &amp; Details</span>
+      </div>
+
+      <div class="field-row cols-2">
+        <div class="field">
+          <label for="budget">Ideal Budget <span class="req" aria-label="required">*</span></label>
+          <div class="input-prefix">
+            <input type="number" id="budget" name="budget"
+                   placeholder="0.00" min="0" step="50" required/>
+          </div>
+          <span class="field-error" id="err-budget">Please enter your ideal budget.</span>
+        </div>
+        <div class="field" style="justify-content:flex-end;padding-bottom:0.1rem;">
+          <p style="font-size:0.82rem;color:var(--text-muted);font-weight:300;line-height:1.6;">
+            Not sure of your budget yet? Give us a rough number — we'll work with you to find the right fit.
+          </p>
+        </div>
+      </div>
+
+      <div class="field-row cols-1">
+        <div class="field">
+          <label for="additionalInfo">Additional Information</label>
+          <textarea id="additionalInfo" name="additionalInfo"
+                    placeholder="Dietary restrictions, allergies, preferred service style, special requests, questions — anything that would help us prepare the best proposal for you…"
+                    rows="5"></textarea>
+        </div>
+      </div>
+
+      <!-- ── HUMAN VERIFICATION ── -->
+      <div class="human-check">
+        <div class="human-check-title">Quick human check</div>
+        <div class="math-challenge">
+          <span class="math-question" id="mathQuestion" aria-live="polite"></span>
+          <span style="font-size:1.1rem;color:var(--text-muted)">=</span>
+          <input class="math-input" type="number" id="mathAnswer"
+                 placeholder="?" aria-label="Answer to the math question" autocomplete="off"/>
+          <span class="field-error" id="err-math" style="display:none">That doesn't look right — please try again.</span>
+        </div>
+        <p class="human-check-note">Solve the simple addition above to confirm you're a human — this helps us keep spam out of your inbox too.</p>
+      </div>
+
+      <!-- SUBMIT -->
+      <div class="form-submit-wrap">
+        <button type="submit" class="btn-submit" id="submitBtn">Send My Request</button>
+        <p class="form-micro">We typically respond within a few hours · <a href="mailto:info@sftapas.com" style="color:var(--gold);text-decoration:none">info@sftapas.com</a></p>
+      </div>
+
+    </form>
+  </div>
+</section>
+
+<!-- CONTACT INFO STRIP -->
+<div class="contact-aside">
+  <div class="contact-aside-inner">
+    <div class="aside-item">
+      <span class="aside-label">Email us directly</span>
+      <span class="aside-value"><a href="mailto:info@sftapas.com">info@sftapas.com</a></span>
+      <span class="aside-note">We monitor this inbox daily</span>
+    </div>
+    <div class="aside-item">
+      <span class="aside-label">Call or text</span>
+      <span class="aside-value"><a href="tel:+14155550000">(415) 555-0000</a></span>
+      <span class="aside-note">Mon – Sat, 9am – 7pm PT</span>
+    </div>
+    <div class="aside-item">
+      <span class="aside-label">Response time</span>
+      <span class="aside-value">Within a few hours</span>
+      <span class="aside-note">We'll follow up by email or phone</span>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg width="32" height="32" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" style="opacity:0.7" aria-hidden="true">
+        <circle cx="44" cy="44" r="40" fill="none" stroke="#C9972A" stroke-width="1.4"/>
+        <circle cx="44" cy="44" r="35" fill="none" stroke="rgba(201,151,42,0.25)" stroke-width="0.6"/>
+        <path id="ft-top" d="M 9 44 A 35 35 0 0 1 79 44" fill="none"/>
+        <text font-family="'DM Sans',system-ui,sans-serif" font-size="5.8" letter-spacing="1.8" fill="rgba(201,151,42,0.65)">
+          <textPath href="#ft-top" startOffset="50%" text-anchor="middle">SAN FRANCISCO</textPath>
+        </text>
+        <path id="ft-bot" d="M 9 44 A 35 35 0 0 0 79 44" fill="none"/>
+        <text font-family="'DM Sans',system-ui,sans-serif" font-size="5.8" letter-spacing="1.8" fill="rgba(201,151,42,0.65)">
+          <textPath href="#ft-bot" startOffset="50%" text-anchor="middle">CALIFORNIA · EST.</textPath>
+        </text>
+        <text x="44" y="53" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="24" font-weight="600" fill="#C9972A" letter-spacing="0.5">SFT</text>
+      </svg>
+      <span style="font-family:var(--font-display);font-size:1.2rem;font-weight:300;color:rgba(255,255,255,0.6);letter-spacing:0.06em;">SF Tapas</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#packages">Packages</a></li>
+      <li><a href="index.html#story">Our Story</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="footer-copy">© 2025 San Francisco Tapas · Tapas Catering San Francisco · Paella Catering Bay Area</div>
+  </div>
+</footer>
+
+<script>
+// ── NAV HAMBURGER ──────────────────────────────────
+function toggleNav() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('mobileNav').classList.remove('open');
+});
+
+// ── MATH CAPTCHA ───────────────────────────────────
+let mathA, mathB, mathAnswer;
+function generateMath() {
+  mathA = Math.floor(Math.random() * 9) + 1;
+  mathB = Math.floor(Math.random() * 9) + 1;
+  mathAnswer = mathA + mathB;
+  document.getElementById('mathQuestion').textContent =
+    `What is ${mathA} + ${mathB}?`;
+  document.getElementById('mathAnswer').value = '';
+}
+generateMath();
+
+// ── OCCASION "OTHER" REVEAL ────────────────────────
+document.getElementById('occasion').addEventListener('change', function () {
+  const wrap = document.getElementById('otherOccasionWrap');
+  const other = document.getElementById('otherOccasion');
+  if (this.value === 'Other') {
+    wrap.classList.add('visible');
+    other.required = true;
+  } else {
+    wrap.classList.remove('visible');
+    other.required = false;
+    other.value = '';
+  }
+});
+
+// ── SET MIN DATE TO TODAY ──────────────────────────
+(function () {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('eventDate').min = today;
+})();
+
+// ── VALIDATION HELPERS ─────────────────────────────
+function markError(id, errId, show) {
+  const el  = document.getElementById(id);
+  const err = document.getElementById(errId);
+  if (!el || !err) return;
+  el.classList.toggle('error', show);
+  err.classList.toggle('visible', show);
+}
+
+function validateEmail(val) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+}
+
+function validateForm() {
+  let ok = true;
+
+  // Full name
+  const name = document.getElementById('fullName').value.trim();
+  markError('fullName', 'err-fullName', !name);
+  if (!name) ok = false;
+
+  // Email
+  const email = document.getElementById('email').value.trim();
+  const emailOk = validateEmail(email);
+  markError('email', 'err-email', !emailOk);
+  if (!emailOk) ok = false;
+
+  // Phone
+  const phone = document.getElementById('phone').value.trim();
+  markError('phone', 'err-phone', !phone);
+  if (!phone) ok = false;
+
+  // Occasion
+  const occasion = document.getElementById('occasion').value;
+  markError('occasion', 'err-occasion', !occasion);
+  if (!occasion) ok = false;
+
+  // Date
+  const date = document.getElementById('eventDate').value;
+  markError('eventDate', 'err-eventDate', !date);
+  if (!date) ok = false;
+
+  // Time
+  const time = document.getElementById('eventTime').value;
+  markError('eventTime', 'err-eventTime', !time);
+  if (!time) ok = false;
+
+  // Guest count
+  const guests = parseInt(document.getElementById('guestCount').value, 10);
+  const guestsOk = !isNaN(guests) && guests >= 2;
+  markError('guestCount', 'err-guestCount', !guestsOk);
+  if (!guestsOk) ok = false;
+
+  // Location
+  const loc = document.getElementById('location').value.trim();
+  markError('location', 'err-location', !loc);
+  if (!loc) ok = false;
+
+  // Budget
+  const budget = document.getElementById('budget').value.trim();
+  markError('budget', 'err-budget', !budget);
+  if (!budget) ok = false;
+
+  // Math captcha
+  const ans = parseInt(document.getElementById('mathAnswer').value, 10);
+  const mathOk = ans === mathAnswer;
+  const mathInput = document.getElementById('mathAnswer');
+  const mathErr   = document.getElementById('err-math');
+  mathInput.classList.toggle('error', !mathOk);
+  mathErr.style.display = mathOk ? 'none' : 'block';
+  if (!mathOk) ok = false;
+
+  return ok;
+}
+
+// ── REAL-TIME CLEAR ON INPUT ───────────────────────
+['fullName','email','phone','occasion','eventDate','eventTime',
+ 'guestCount','location','budget'].forEach(id => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener('input', () => {
+    el.classList.remove('error');
+    const errEl = document.getElementById('err-' + id);
+    if (errEl) errEl.classList.remove('visible');
+  });
+});
+document.getElementById('mathAnswer').addEventListener('input', () => {
+  document.getElementById('mathAnswer').classList.remove('error');
+  document.getElementById('err-math').style.display = 'none';
+});
+
+// ── FORM SUBMISSION ────────────────────────────────
+document.getElementById('contactForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  // Hide banners
+  document.getElementById('bannerSuccess').classList.remove('visible');
+  document.getElementById('bannerError').classList.remove('visible');
+
+  // Honeypot check — if filled, silently pretend success
+  if (document.getElementById('website').value) {
+    showSuccess(); return;
+  }
+
+  if (!validateForm()) {
+    document.getElementById('bannerError').classList.add('visible');
+    document.getElementById('bannerErrorText').textContent =
+      'Please fill in all required fields correctly before submitting.';
+    document.getElementById('bannerError').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  // Gather data
+  const occasion   = document.getElementById('occasion').value;
+  const otherOcc   = document.getElementById('otherOccasion').value.trim();
+  const occasionFinal = (occasion === 'Other' && otherOcc) ? `Other — ${otherOcc}` : occasion;
+
+  const payload = {
+    to:      'info@sftapas.com',
+    subject: `New Catering Enquiry — ${occasionFinal} on ${document.getElementById('eventDate').value}`,
+    body: `
+NEW CATERING ENQUIRY — SF TAPAS WEBSITE
+========================================
+
+ABOUT THE CLIENT
+Name:     ${document.getElementById('fullName').value.trim()}
+Company:  ${document.getElementById('company').value.trim() || '—'}
+Email:    ${document.getElementById('email').value.trim()}
+Phone:    ${document.getElementById('phone').value.trim()}
+How heard: ${document.getElementById('howHeard').value || '—'}
+
+EVENT DETAILS
+Occasion: ${occasionFinal}
+Date:     ${document.getElementById('eventDate').value}
+Time:     ${document.getElementById('eventTime').value}
+Guests:   ${document.getElementById('guestCount').value}
+Location: ${document.getElementById('location').value.trim()}
+
+BUDGET & NOTES
+Budget:   $${document.getElementById('budget').value}
+Notes:    ${document.getElementById('additionalInfo').value.trim() || '—'}
+    `.trim()
+  };
+
+  // ── Disable button & show loading state
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  try {
+    /*
+      EMAIL SENDING NOTE:
+      ───────────────────
+      Pure HTML pages cannot send email directly from the browser.
+      Choose ONE of these three approaches and replace this block:
+
+      OPTION A — Formspree (free tier, easiest, no backend needed):
+        1. Sign up at formspree.io
+        2. Create a form pointed at info@sftapas.com
+        3. Replace the fetch below with:
+           const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+             method: 'POST',
+             headers: { 'Accept': 'application/json' },
+             body: new FormData(document.getElementById('contactForm'))
+           });
+
+      OPTION B — EmailJS (free tier, client-side only):
+        See emailjs.com — add their SDK and call emailjs.send()
+
+      OPTION C — Your own backend / Odoo webhook:
+        POST to your server endpoint with payload below.
+
+      For now, this simulates a successful submission so you can
+      preview the UX flow. Remove the setTimeout block when you
+      connect a real email service.
+    */
+    await new Promise(resolve => setTimeout(resolve, 1200)); // ← remove when live
+    // const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', { ... });
+    // if (!res.ok) throw new Error('Network response not ok');
+
+    showSuccess();
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = 'Send My Request';
+    document.getElementById('bannerError').classList.add('visible');
+    document.getElementById('bannerErrorText').textContent =
+      'We couldn\'t send your message right now. Please email us directly at info@sftapas.com or try again.';
+    document.getElementById('bannerError').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+});
+
+function showSuccess() {
+  document.getElementById('contactForm').style.display = 'none';
+  const banner = document.getElementById('bannerSuccess');
+  banner.classList.add('visible');
+  banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+</script>
+
+</body>
+</html>

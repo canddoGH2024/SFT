@@ -58,15 +58,52 @@
     backdrop-filter: blur(8px);
   }
   .nav-logo {
-    font-family: var(--font-display);
-    font-size: 1.55rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
     text-decoration: none;
-    transition: color 0.3s;
+    flex-shrink: 0;
   }
-  nav.scrolled .nav-logo { color: var(--charcoal); }
+
+  /* Stamp mark — always visible */
+  .nav-logo-mark {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+  nav.scrolled .nav-logo-mark { transform: scale(0.92); }
+
+  /* Wordmark — hidden when over hero, appears on scroll */
+  .nav-logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.35s, transform 0.35s;
+    pointer-events: none;
+  }
+  nav.scrolled .nav-logo-text {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+  .nav-logo-text-top {
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .nav-logo-text-bottom {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--charcoal);
+  }
   .nav-links {
     display: flex;
     gap: 2rem;
@@ -98,7 +135,20 @@
   .nav-hamburger span { width: 24px; height: 1.5px; background: #fff; display: block; transition: background 0.3s; }
   nav.scrolled .nav-hamburger span { background: var(--charcoal); }
 
-  /* ── HERO ───────────────────────────────────────── */
+  /* ── NAV LOGO SVG COLOUR STATES ────────────────── */
+  /* Over hero: all white */
+  .nav-ring-outer { stroke: rgba(255,255,255,0.88); transition: stroke 0.4s; }
+  .nav-ring-inner { stroke: rgba(255,255,255,0.2);  transition: stroke 0.4s; }
+  .nav-arc-txt    { fill:   rgba(255,255,255,0.65); transition: fill   0.4s; }
+  .nav-rule       { stroke: rgba(255,255,255,0.18); transition: stroke 0.4s; }
+  .nav-sft        { fill:   rgba(255,255,255,0.95); transition: fill   0.4s; }
+
+  /* Scrolled: gold ring, dark monogram */
+  nav.scrolled .nav-ring-outer { stroke: #C9972A; }
+  nav.scrolled .nav-ring-inner { stroke: rgba(201,151,42,0.28); }
+  nav.scrolled .nav-arc-txt    { fill:   rgba(201,151,42,0.75); }
+  nav.scrolled .nav-rule       { stroke: rgba(201,151,42,0.22); }
+  nav.scrolled .nav-sft        { fill:   #C9972A; }
   .hero {
     position: relative;
     height: 100vh;
@@ -954,22 +1004,64 @@
 <!-- MOBILE NAV DRAWER -->
 <div class="mobile-nav" id="mobileNav">
   <button class="mobile-nav-close" onclick="toggleNav()" aria-label="Close menu">✕</button>
+  <svg width="56" height="56" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:1rem;opacity:0.8" aria-hidden="true">
+    <circle cx="44" cy="44" r="40" fill="none" stroke="#C9972A" stroke-width="1.4"/>
+    <circle cx="44" cy="44" r="35" fill="none" stroke="rgba(201,151,42,0.25)" stroke-width="0.6"/>
+    <path id="mn-top" d="M 9 44 A 35 35 0 0 1 79 44" fill="none"/>
+    <text font-family="'DM Sans',system-ui,sans-serif" font-size="5.8" letter-spacing="1.8" fill="rgba(201,151,42,0.65)">
+      <textPath href="#mn-top" startOffset="50%" text-anchor="middle">SAN FRANCISCO</textPath>
+    </text>
+    <path id="mn-bot" d="M 9 44 A 35 35 0 0 0 79 44" fill="none"/>
+    <text font-family="'DM Sans',system-ui,sans-serif" font-size="5.8" letter-spacing="1.8" fill="rgba(201,151,42,0.65)">
+      <textPath href="#mn-bot" startOffset="50%" text-anchor="middle">CALIFORNIA · EST.</textPath>
+    </text>
+    <text x="44" y="53" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="24" font-weight="600" fill="#C9972A" letter-spacing="0.5">SFT</text>
+  </svg>
   <a href="#services" onclick="toggleNav()">Services</a>
   <a href="#experience" onclick="toggleNav()">Experience</a>
   <a href="#packages" onclick="toggleNav()">Packages</a>
   <a href="#story" onclick="toggleNav()">Our Story</a>
-  <a href="#contact" onclick="toggleNav()" style="color: var(--gold-light);">Get a Quote</a>
+  <a href="contact.html" onclick="toggleNav()" style="color: var(--gold-light);">Get a Quote</a>
 </div>
 
 <!-- STICKY NAV -->
 <nav id="mainNav">
-  <a class="nav-logo" href="#">SF Tapas</a>
+  <a class="nav-logo" href="#" aria-label="SF Tapas — Home">
+
+    <!-- Stamp mark: always visible, switches colour on scroll -->
+    <svg class="nav-logo-mark" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="44" cy="44" r="40" fill="none" stroke-width="1.4" class="nav-ring-outer"/>
+      <circle cx="44" cy="44" r="35" fill="none" stroke-width="0.6" class="nav-ring-inner"/>
+      <path id="nav-arc-top" d="M 9 44 A 35 35 0 0 1 79 44" fill="none"/>
+      <text font-family="'DM Sans',system-ui,sans-serif" font-size="5.8" font-weight="400" letter-spacing="1.8" class="nav-arc-txt">
+        <textPath href="#nav-arc-top" startOffset="50%" text-anchor="middle">SAN FRANCISCO</textPath>
+      </text>
+      <path id="nav-arc-bot" d="M 9 44 A 35 35 0 0 0 79 44" fill="none"/>
+      <text font-family="'DM Sans',system-ui,sans-serif" font-size="5.8" font-weight="400" letter-spacing="1.8" class="nav-arc-txt">
+        <textPath href="#nav-arc-bot" startOffset="50%" text-anchor="middle">CALIFORNIA · EST.</textPath>
+      </text>
+      <line x1="14" y1="37" x2="31" y2="37" stroke-width="0.5" class="nav-rule"/>
+      <line x1="57" y1="37" x2="74" y2="37" stroke-width="0.5" class="nav-rule"/>
+      <line x1="14" y1="51" x2="31" y2="51" stroke-width="0.5" class="nav-rule"/>
+      <line x1="57" y1="51" x2="74" y2="51" stroke-width="0.5" class="nav-rule"/>
+      <text x="44" y="53" text-anchor="middle"
+            font-family="'Cormorant Garamond',Georgia,serif"
+            font-size="24" font-weight="600" letter-spacing="0.5" class="nav-sft">SFT</text>
+    </svg>
+
+    <!-- Wordmark — slides in on scroll -->
+    <span class="nav-logo-text" aria-hidden="true">
+      <span class="nav-logo-text-top">San Francisco</span>
+      <span class="nav-logo-text-bottom">Tapas</span>
+    </span>
+
+  </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#packages">Packages</a></li>
     <li><a href="#story">Our Story</a></li>
-    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+    <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
   </ul>
   <div class="nav-hamburger" onclick="toggleNav()" aria-label="Open menu" role="button" tabindex="0">
     <span></span><span></span><span></span>
@@ -981,11 +1073,11 @@
   <div class="hero-img-placeholder"></div>
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <span class="hero-eyebrow">San Francisco · Spanish Culinary Experiences</span>
-    <h1>Authentic Spanish <em>Tapas</em> &amp; Paella Catering</h1>
+    <span class="hero-eyebrow">Live Paella · Spanish Tapas · Private Events</span>
+    <h1>A <em>Culinary Experience</em><br>Worth Gathering For</h1>
     <p class="hero-sub">Private events, corporate catering, and live paella experiences crafted with tradition and modern presentation — from the heart of Spain to your table.</p>
     <div class="hero-btns">
-      <a href="#contact" class="btn-primary">Get a Quote</a>
+      <a href="contact.html" class="btn-primary">Get a Quote</a>
       <a href="#packages" class="btn-outline">View Packages</a>
     </div>
   </div>
@@ -1096,7 +1188,7 @@
       <p>Our paella is prepared fresh on-site, creating an engaging and authentic experience for your guests. <em>The aroma, the presentation, and the moment it's served</em> — it becomes the highlight of any event.</p>
       <p>We don't just bring food. We bring a moment. The kind guests photograph, talk about, and remember long after the evening ends.</p>
       <p>Ideal for birthdays, corporate gatherings, weddings, and private celebrations across the Bay Area.</p>
-      <a href="#contact" class="btn-primary">Book Your Event</a>
+      <a href="contact.html" class="btn-primary">Book Your Event</a>
     </div>
   </div>
 </section>
@@ -1145,7 +1237,7 @@
     </div>
   </div>
   <div class="packages-cta">
-    <a href="#contact" class="btn-gold-outline">Request a Custom Quote</a>
+    <a href="contact.html" class="btn-gold-outline">Request a Custom Quote</a>
   </div>
 </section>
 
@@ -1268,8 +1360,8 @@
     <h2>Let's Plan<br>Your Event</h2>
     <p>Tell us about your gathering and we'll create a customized Spanish catering experience tailored to your guests, your space, and your vision.</p>
     <div class="final-cta-btns">
-      <a href="mailto:info@sftapas.com" class="btn-white">Get a Quote</a>
-      <a href="tel:+14155550000" class="btn-white-outline">Call Now</a>
+      <a href="contact.html" class="btn-white">Get a Quote</a>
+      <a href="contact.html" class="btn-white-outline">Call Now</a>
     </div>
     <p class="final-micro">We typically respond within a few hours · info@sftapas.com</p>
   </div>
@@ -1278,12 +1370,27 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo">SF Tapas</div>
+    <div class="footer-logo">
+      <svg width="32" height="32" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;margin-right:0.6rem;opacity:0.7" aria-hidden="true">
+        <circle cx="44" cy="44" r="40" fill="none" stroke="#C9972A" stroke-width="1.4"/>
+        <circle cx="44" cy="44" r="35" fill="none" stroke="rgba(201,151,42,0.25)" stroke-width="0.6"/>
+        <path id="ft-top" d="M 9 44 A 35 35 0 0 1 79 44" fill="none"/>
+        <text font-family="'DM Sans',system-ui,sans-serif" font-size="5.8" letter-spacing="1.8" fill="rgba(201,151,42,0.65)">
+          <textPath href="#ft-top" startOffset="50%" text-anchor="middle">SAN FRANCISCO</textPath>
+        </text>
+        <path id="ft-bot" d="M 9 44 A 35 35 0 0 0 79 44" fill="none"/>
+        <text font-family="'DM Sans',system-ui,sans-serif" font-size="5.8" letter-spacing="1.8" fill="rgba(201,151,42,0.65)">
+          <textPath href="#ft-bot" startOffset="50%" text-anchor="middle">CALIFORNIA · EST.</textPath>
+        </text>
+        <text x="44" y="53" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="24" font-weight="600" fill="#C9972A" letter-spacing="0.5">SFT</text>
+      </svg>
+      <span style="font-family:var(--font-display);font-size:1.2rem;font-weight:300;color:rgba(255,255,255,0.6);vertical-align:middle;letter-spacing:0.06em;">SF Tapas</span>
+    </div>
     <ul class="footer-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#packages">Packages</a></li>
       <li><a href="#story">Our Story</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="footer-copy">© 2025 San Francisco Tapas · Tapas Catering San Francisco · Paella Catering Bay Area</div>
   </div>
