@@ -4,632 +4,344 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Contact SF Tapas — Request a quote for authentic Spanish tapas and paella catering in San Francisco. Private events, corporate catering, weddings and more.">
-<title>Contact & Get a Quote — SF Tapas | Tapas Catering San Francisco</title>
+<title>Contact &amp; Get a Quote — SF Tapas | Tapas Catering San Francisco</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#F5F0E8;--warm-white:#FAF7F2;--charcoal:#1C1917;--deep:#0D0C0A;
+  --gold:#C9972A;--gold-light:#E8C06A;--terracotta:#B85C38;--sage:#6B7C5E;
+  --text-muted:#6B6560;--border:rgba(28,25,23,0.12);
+  --error:#C0392B;--success:#5A8A5E;
+  --font-display:'Cormorant Garamond',Georgia,serif;
+  --font-body:'DM Sans',system-ui,sans-serif;
+  --max:1160px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--warm-white);color:var(--charcoal);font-size:16px;line-height:1.7;overflow-x:hidden}
 
-  :root {
-    --cream: #F5F0E8;
-    --warm-white: #FAF7F2;
-    --charcoal: #1C1917;
-    --deep: #0D0C0A;
-    --gold: #C9972A;
-    --gold-light: #E8C06A;
-    --terracotta: #B85C38;
-    --text-muted: #6B6560;
-    --border: rgba(28,25,23,0.12);
-    --border-focus: #C9972A;
-    --error: #C0392B;
-    --success: #5A8A5E;
-    --font-display: 'Cormorant Garamond', Georgia, serif;
-    --font-body: 'DM Sans', system-ui, sans-serif;
-    --max: 1160px;
-  }
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:.8rem 2.5rem;background:transparent;transition:background .4s,box-shadow .4s,padding .4s}
+nav.scrolled{background:rgba(250,247,242,.97);box-shadow:0 1px 0 var(--border);padding:.5rem 2.5rem;backdrop-filter:blur(8px)}
+.nav-logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;flex-shrink:0}
+.nav-logo-mark{width:62px;height:62px;flex-shrink:0;transition:width .35s,height .35s}
+nav.scrolled .nav-logo-mark{width:50px;height:50px}
+.nav-ring-outer{stroke:rgba(255,255,255,.9);transition:stroke .4s}
+.nav-ring-inner{stroke:rgba(255,255,255,.2);transition:stroke .4s}
+.nav-arc-txt{fill:rgba(255,255,255,.78);transition:fill .4s}
+.nav-rule{stroke:rgba(255,255,255,.18);transition:stroke .4s}
+.nav-sft{fill:rgba(255,255,255,.97);transition:fill .4s}
+nav.scrolled .nav-ring-outer{stroke:#C9972A}
+nav.scrolled .nav-ring-inner{stroke:rgba(201,151,42,.28)}
+nav.scrolled .nav-arc-txt{fill:rgba(201,151,42,.8)}
+nav.scrolled .nav-rule{stroke:rgba(201,151,42,.2)}
+nav.scrolled .nav-sft{fill:#C9972A}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1}
+.nav-logo-text-top{font-family:var(--font-body);font-size:.56rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.6);transition:color .4s}
+.nav-logo-text-bottom{font-family:var(--font-display);font-size:1.28rem;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.97);transition:color .4s}
+nav.scrolled .nav-logo-text-top{color:var(--text-muted)}
+nav.scrolled .nav-logo-text-bottom{color:var(--charcoal)}
+.nav-right{display:flex;align-items:center;gap:1.4rem}
+.nav-links{display:flex;gap:1.6rem;list-style:none}
+.nav-links a{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.82);text-decoration:none;transition:color .25s}
+nav.scrolled .nav-links a{color:var(--text-muted)}
+.nav-links a:hover{color:var(--gold)!important}
+.lang-toggle{display:flex;border:1px solid rgba(255,255,255,.3);border-radius:2px;overflow:hidden;transition:border-color .4s}
+nav.scrolled .lang-toggle{border-color:var(--border)}
+.lang-btn{padding:.26rem .52rem;font-family:var(--font-body);font-size:.66rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;background:none;border:none;cursor:pointer;color:rgba(255,255,255,.6);line-height:1;transition:background .2s,color .2s}
+nav.scrolled .lang-btn{color:var(--text-muted)}
+.lang-btn.active{background:var(--gold);color:var(--deep)}
+.nav-cta{background:var(--gold);color:var(--deep)!important;padding:.52rem 1.2rem;border-radius:2px;font-family:var(--font-body);font-size:.76rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:background .25s,transform .2s}
+.nav-cta:hover{background:var(--gold-light);transform:translateY(-1px)}
+.nav-hamburger{display:none;cursor:pointer;flex-direction:column;gap:5px}
+.nav-hamburger span{width:22px;height:1.5px;background:#fff;display:block;transition:background .3s}
+nav.scrolled .nav-hamburger span{background:var(--charcoal)}
 
-  html { scroll-behavior: smooth; }
+/* ── MOBILE NAV ── */
+.mobile-nav{display:none;position:fixed;inset:0;background:var(--deep);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mobile-nav.open{display:flex}
+.mobile-nav a{font-family:var(--font-display);font-size:2rem;font-weight:300;color:rgba(255,255,255,.8);text-decoration:none;transition:color .2s}
+.mobile-nav a:hover{color:var(--gold-light)}
+.mobile-nav-close{position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:rgba(255,255,255,.5);font-size:1.8rem;cursor:pointer;line-height:1}
+.mobile-lang{display:flex;border:1px solid rgba(255,255,255,.2);border-radius:2px;overflow:hidden;margin-top:.5rem}
+.mobile-lang button{padding:.4rem 1.1rem;background:none;border:none;color:rgba(255,255,255,.55);font-family:var(--font-body);font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s}
+.mobile-lang button.active{background:var(--gold);color:var(--deep)}
 
-  body {
-    font-family: var(--font-body);
-    background: var(--warm-white);
-    color: var(--charcoal);
-    font-size: 16px;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
+/* ── PAGE HERO with real image ── */
+.page-hero{position:relative;padding:10rem 2rem 6rem;text-align:center;overflow:hidden;min-height:420px;display:flex;align-items:center;justify-content:center}
+.page-hero-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920&q=80&fit=crop&crop=center');background-size:cover;background-position:center}
+.page-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,8,6,.72) 0%,rgba(10,8,6,.65) 60%,rgba(10,8,6,.8) 100%)}
+.page-hero-content{position:relative;z-index:1;max-width:680px}
+.page-hero-eyebrow{display:inline-block;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-light);margin-bottom:.9rem}
+.page-hero h1{font-family:var(--font-display);font-size:clamp(2.8rem,5.5vw,4.4rem);font-weight:300;color:#fff;line-height:1.1;margin-bottom:.9rem}
+.page-hero h1 em{font-style:italic;color:var(--gold-light)}
+.page-hero p{font-size:1.02rem;color:rgba(255,255,255,.58);font-weight:300;max-width:480px;margin:0 auto}
 
-  /* ── NAV (identical to index) ─────────────────── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.85rem 2.5rem;
-    background: rgba(250,247,242,0.97);
-    box-shadow: 0 1px 0 var(--border);
-    backdrop-filter: blur(8px);
-  }
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    text-decoration: none;
-    flex-shrink: 0;
-  }
-  .nav-logo-mark { width: 44px; height: 44px; flex-shrink: 0; }
-  .nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
-  .nav-logo-text-top {
-    font-family: var(--font-body);
-    font-size: 0.6rem; font-weight: 400;
-    letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .nav-logo-text-bottom {
-    font-family: var(--font-display);
-    font-size: 1.25rem; font-weight: 600;
-    letter-spacing: 0.04em; color: var(--charcoal);
-  }
-  .nav-ring-outer { stroke: #C9972A; }
-  .nav-ring-inner { stroke: rgba(201,151,42,0.28); }
-  .nav-arc-txt    { fill: rgba(201,151,42,0.75); }
-  .nav-rule       { stroke: rgba(201,151,42,0.22); }
-  .nav-sft        { fill: #C9972A; }
+/* ── CONTACT ASIDE (info strip) ── */
+.contact-aside{background:var(--charcoal);padding:2.8rem 2rem}
+.contact-aside-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.aside-item{display:flex;flex-direction:column;gap:.4rem}
+.aside-label{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.32)}
+.aside-value{font-family:var(--font-display);font-size:1.18rem;font-weight:300;color:rgba(255,255,255,.82)}
+.aside-value a{color:var(--gold-light);text-decoration:none;transition:color .2s}
+.aside-value a:hover{color:#fff}
+.aside-note{font-size:.76rem;color:rgba(255,255,255,.28);font-weight:300}
 
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    font-size: 0.85rem; font-weight: 400;
-    letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--text-muted); text-decoration: none;
-    transition: color 0.25s;
-  }
-  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
-  .nav-cta {
-    background: var(--gold); color: var(--deep) !important;
-    padding: 0.6rem 1.4rem !important; border-radius: 2px;
-    font-weight: 500 !important; letter-spacing: 0.04em;
-    transition: background 0.25s, transform 0.2s !important;
-  }
-  .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
-  .nav-hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
-  .nav-hamburger span { width: 24px; height: 1.5px; background: var(--charcoal); display: block; }
+/* ── FORM SECTION ── */
+.form-section{padding:5rem 2rem 7rem;background:var(--warm-white)}
+.form-wrap{max-width:860px;margin:0 auto}
 
-  /* ── MOBILE NAV ───────────────────────────────── */
-  .mobile-nav {
-    display: none; position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: var(--deep); z-index: 999;
-    flex-direction: column; align-items: center;
-    justify-content: center; gap: 2.5rem;
-  }
-  .mobile-nav.open { display: flex; }
-  .mobile-nav a {
-    font-family: var(--font-display); font-size: 2.2rem;
-    font-weight: 300; color: rgba(255,255,255,0.8);
-    text-decoration: none; transition: color 0.2s;
-  }
-  .mobile-nav a:hover { color: var(--gold-light); }
-  .mobile-nav-close {
-    position: absolute; top: 1.5rem; right: 2rem;
-    background: none; border: none;
-    color: rgba(255,255,255,0.5); font-size: 1.8rem;
-    cursor: pointer; line-height: 1;
-  }
+/* group headers */
+.form-group-header{display:flex;align-items:center;gap:1rem;margin:3rem 0 1.8rem;padding-bottom:.8rem;border-bottom:1px solid var(--border)}
+.form-group-header:first-of-type{margin-top:0}
+.form-group-num{font-family:var(--font-display);font-size:2.2rem;font-weight:300;color:rgba(28,25,23,.08);line-height:1;flex-shrink:0}
+.form-group-label{font-family:var(--font-display);font-size:1.4rem;font-weight:400;color:var(--charcoal)}
 
-  /* ── PAGE HEADER ──────────────────────────────── */
-  .page-header {
-    background: var(--charcoal);
-    padding: 9rem 2rem 5rem;
-    text-align: center;
-  }
-  .page-header-eyebrow {
-    display: inline-block;
-    font-size: 0.72rem; letter-spacing: 0.22em;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 1rem;
-  }
-  .page-header h1 {
-    font-family: var(--font-display);
-    font-size: clamp(2.8rem, 5.5vw, 4.4rem);
-    font-weight: 300; color: #fff; line-height: 1.1;
-    margin-bottom: 1rem;
-  }
-  .page-header h1 em { font-style: italic; color: var(--gold-light); }
-  .page-header p {
-    font-size: 1.05rem; color: rgba(255,255,255,0.55);
-    font-weight: 300; max-width: 520px; margin: 0 auto;
-  }
+/* field layout */
+.field-row{display:grid;gap:1.2rem;margin-bottom:1.2rem}
+.field-row.cols-2{grid-template-columns:1fr 1fr}
+.field-row.cols-3{grid-template-columns:1fr 1fr 1fr}
+.field-row.cols-1{grid-template-columns:1fr}
+.field{display:flex;flex-direction:column;gap:.4rem}
+.field label{font-size:.76rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.field label .req{color:var(--gold);margin-left:.2rem}
+.field input,.field select,.field textarea{font-family:var(--font-body);font-size:.93rem;font-weight:300;color:var(--charcoal);background:#fff;border:1px solid var(--border);border-radius:2px;padding:.75rem 1rem;width:100%;transition:border-color .2s,box-shadow .2s;appearance:none;-webkit-appearance:none}
+.field input::placeholder,.field textarea::placeholder{color:rgba(107,101,96,.4)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,151,42,.1)}
+.field input.error,.field select.error,.field textarea.error{border-color:var(--error);box-shadow:0 0 0 3px rgba(192,57,43,.08)}
+.field-error{font-size:.73rem;color:var(--error);display:none;margin-top:.1rem}
+.field-error.visible{display:block}
+.field textarea{resize:vertical;min-height:108px}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6560' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;cursor:pointer}
+.input-prefix{position:relative;display:flex;align-items:center}
+.input-prefix::before{content:'$';position:absolute;left:1rem;color:var(--text-muted);font-size:.93rem;pointer-events:none}
+.input-prefix input{padding-left:1.8rem}
+.other-occasion-wrap{display:none;margin-top:.8rem}
+.other-occasion-wrap.visible{display:block}
 
-  /* ── FORM SECTION ─────────────────────────────── */
-  .form-section {
-    padding: 5rem 2rem 7rem;
-    background: var(--warm-white);
-  }
-  .form-wrap {
-    max-width: 860px;
-    margin: 0 auto;
-  }
+/* honeypot */
+.hp-field{position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none}
 
-  /* ── FIELDSET GROUPS ──────────────────────────── */
-  .form-group-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin: 3rem 0 1.8rem;
-    padding-bottom: 0.8rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .form-group-header:first-of-type { margin-top: 0; }
-  .form-group-num {
-    font-family: var(--font-display);
-    font-size: 2.2rem; font-weight: 300;
-    color: rgba(28,25,23,0.1); line-height: 1;
-    flex-shrink: 0;
-  }
-  .form-group-label {
-    font-family: var(--font-display);
-    font-size: 1.4rem; font-weight: 400;
-    color: var(--charcoal);
-  }
+/* human check */
+.human-check{background:var(--cream);border:1px solid var(--border);border-radius:2px;padding:1.5rem 1.8rem;margin:2.2rem 0}
+.human-check-title{font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.9rem}
+.math-challenge{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.math-question{font-family:var(--font-display);font-size:1.4rem;font-weight:400;color:var(--charcoal);white-space:nowrap}
+.math-input{font-family:var(--font-body)!important;font-size:1rem!important;width:84px!important;text-align:center;padding:.58rem .8rem!important;border:1px solid var(--border);border-radius:2px;background:#fff;transition:border-color .2s,box-shadow .2s}
+.math-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,151,42,.1)}
+.math-input.error{border-color:var(--error)}
+.human-check-note{font-size:.75rem;color:var(--text-muted);margin-top:.7rem;font-weight:300}
 
-  /* ── FIELD GRID ───────────────────────────────── */
-  .field-row {
-    display: grid;
-    gap: 1.2rem;
-    margin-bottom: 1.2rem;
-  }
-  .field-row.cols-2 { grid-template-columns: 1fr 1fr; }
-  .field-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
-  .field-row.cols-1 { grid-template-columns: 1fr; }
+/* submit */
+.form-submit-wrap{display:flex;align-items:center;gap:1.5rem;margin-top:1rem;flex-wrap:wrap}
+.btn-submit{background:var(--gold);color:var(--deep);padding:1rem 2.8rem;border:none;border-radius:2px;font-family:var(--font-body);font-size:.84rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .25s,transform .2s}
+.btn-submit:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.form-micro{font-size:.78rem;color:var(--text-muted);font-weight:300}
+.form-micro a{color:var(--gold);text-decoration:none}
 
-  /* ── INDIVIDUAL FIELD ─────────────────────────── */
-  .field {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-  .field label {
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .field label .req {
-    color: var(--gold);
-    margin-left: 0.2rem;
-    font-size: 0.9em;
-  }
-  .field input,
-  .field select,
-  .field textarea {
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    font-weight: 300;
-    color: var(--charcoal);
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    padding: 0.78rem 1rem;
-    width: 100%;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    appearance: none;
-    -webkit-appearance: none;
-  }
-  .field input::placeholder,
-  .field textarea::placeholder { color: rgba(107,101,96,0.45); }
-  .field input:focus,
-  .field select:focus,
-  .field textarea:focus {
-    outline: none;
-    border-color: var(--gold);
-    box-shadow: 0 0 0 3px rgba(201,151,42,0.12);
-  }
-  .field input.error,
-  .field select.error,
-  .field textarea.error {
-    border-color: var(--error);
-    box-shadow: 0 0 0 3px rgba(192,57,43,0.1);
-  }
-  .field-error {
-    font-size: 0.75rem;
-    color: var(--error);
-    display: none;
-    margin-top: 0.1rem;
-  }
-  .field-error.visible { display: block; }
-  .field textarea { resize: vertical; min-height: 110px; }
-  /* Custom select arrow */
-  .field select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6560' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 1rem center;
-    padding-right: 2.5rem;
-    cursor: pointer;
-  }
-  /* Budget prefix wrapper */
-  .input-prefix {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  .input-prefix::before {
-    content: '$';
-    position: absolute;
-    left: 1rem;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    pointer-events: none;
-  }
-  .input-prefix input { padding-left: 1.8rem; }
+/* banners */
+.form-banner{display:none;padding:1.2rem 1.5rem;border-radius:2px;margin-bottom:1.8rem;font-size:.92rem;align-items:flex-start;gap:.8rem}
+.form-banner.visible{display:flex}
+.form-banner.success{background:rgba(90,138,94,.1);border:1px solid rgba(90,138,94,.28);color:var(--success)}
+.form-banner.failure{background:rgba(192,57,43,.07);border:1px solid rgba(192,57,43,.22);color:var(--error)}
+.banner-icon{font-size:1.05rem;flex-shrink:0;margin-top:.1rem}
 
-  /* "Other occasion" text reveal */
-  .other-occasion-wrap {
-    display: none;
-    margin-top: 0.8rem;
-  }
-  .other-occasion-wrap.visible { display: block; }
+/* ── FOOTER ── */
+footer{background:var(--deep);color:rgba(255,255,255,.4);padding:3rem 2rem}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+.footer-logo{display:flex;align-items:center;gap:.6rem}
+.footer-links{display:flex;gap:1.8rem;list-style:none;flex-wrap:wrap}
+.footer-links a{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--gold-light)}
+.footer-copy{font-size:.7rem}
 
-  /* ── HONEYPOT (bot trap) ──────────────────────── */
-  .hp-field {
-    position: absolute;
-    left: -9999px;
-    top: -9999px;
-    opacity: 0;
-    pointer-events: none;
-    tab-index: -1;
-  }
-
-  /* ── HUMAN CHECK ──────────────────────────────── */
-  .human-check {
-    background: var(--cream);
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    padding: 1.6rem 1.8rem;
-    margin: 2.5rem 0;
-  }
-  .human-check-title {
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 1rem;
-  }
-  .math-challenge {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  .math-question {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    font-weight: 400;
-    color: var(--charcoal);
-    white-space: nowrap;
-  }
-  .math-input {
-    font-family: var(--font-body) !important;
-    font-size: 1rem !important;
-    width: 90px !important;
-    text-align: center;
-    padding: 0.6rem 0.8rem !important;
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    background: #fff;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .math-input:focus {
-    outline: none;
-    border-color: var(--gold);
-    box-shadow: 0 0 0 3px rgba(201,151,42,0.12);
-  }
-  .math-input.error { border-color: var(--error); }
-  .human-check-note {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    margin-top: 0.8rem;
-    font-weight: 300;
-  }
-
-  /* ── SUBMIT ───────────────────────────────────── */
-  .form-submit-wrap {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-top: 1rem;
-    flex-wrap: wrap;
-  }
-  .btn-submit {
-    background: var(--gold);
-    color: var(--deep);
-    padding: 1rem 2.8rem;
-    border: none;
-    border-radius: 2px;
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.25s, transform 0.2s;
-    position: relative;
-  }
-  .btn-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
-  .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-  .form-micro {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    font-weight: 300;
-  }
-
-  /* ── SUCCESS / ERROR BANNERS ──────────────────── */
-  .form-banner {
-    display: none;
-    padding: 1.2rem 1.6rem;
-    border-radius: 2px;
-    margin-bottom: 2rem;
-    font-size: 0.95rem;
-    font-weight: 400;
-    align-items: flex-start;
-    gap: 0.8rem;
-  }
-  .form-banner.visible { display: flex; }
-  .form-banner.success {
-    background: rgba(90,138,94,0.1);
-    border: 1px solid rgba(90,138,94,0.3);
-    color: var(--success);
-  }
-  .form-banner.failure {
-    background: rgba(192,57,43,0.08);
-    border: 1px solid rgba(192,57,43,0.25);
-    color: var(--error);
-  }
-  .banner-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
-
-  /* ── CONTACT INFO SIDEBAR ─────────────────────── */
-  .contact-aside {
-    background: var(--charcoal);
-    padding: 3rem 2rem 5rem;
-  }
-  .contact-aside-inner {
-    max-width: 860px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-  .aside-item { display: flex; flex-direction: column; gap: 0.5rem; }
-  .aside-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-  }
-  .aside-value {
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    font-weight: 300;
-    color: rgba(255,255,255,0.85);
-  }
-  .aside-value a {
-    color: var(--gold-light);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .aside-value a:hover { color: #fff; }
-  .aside-note {
-    font-size: 0.78rem;
-    color: rgba(255,255,255,0.3);
-    font-weight: 300;
-  }
-
-  /* ── FOOTER ───────────────────────────────────── */
-  footer {
-    background: var(--deep);
-    color: rgba(255,255,255,0.45);
-    padding: 3.5rem 2rem;
-  }
-  .footer-inner {
-    max-width: var(--max);
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-  }
-  .footer-logo { display: flex; align-items: center; gap: 0.6rem; }
-  .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
-  .footer-links a {
-    font-size: 0.78rem; letter-spacing: 0.08em;
-    text-transform: uppercase; color: rgba(255,255,255,0.35);
-    text-decoration: none; transition: color 0.2s;
-  }
-  .footer-links a:hover { color: var(--gold-light); }
-  .footer-copy { font-size: 0.75rem; }
-
-  /* ── RESPONSIVE ───────────────────────────────── */
-  @media (max-width: 900px) {
-    nav { padding: 0.85rem 1.5rem; }
-    .nav-links { display: none; }
-    .nav-hamburger { display: flex; }
-    .field-row.cols-2,
-    .field-row.cols-3 { grid-template-columns: 1fr; }
-    .contact-aside-inner { grid-template-columns: 1fr; gap: 1.5rem; }
-    .form-submit-wrap { flex-direction: column; align-items: flex-start; }
-  }
-  @media (max-width: 560px) {
-    nav { padding: 0.75rem 1.2rem; }
-    .page-header { padding: 8rem 1.2rem 4rem; }
-    .form-section { padding: 3rem 1.2rem 5rem; }
-    .footer-inner { flex-direction: column; align-items: flex-start; }
-  }
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:.8rem 1.5rem}
+  .nav-links,.nav-cta,.lang-toggle{display:none}
+  .nav-hamburger{display:flex}
+  .field-row.cols-2,.field-row.cols-3{grid-template-columns:1fr}
+  .contact-aside-inner{grid-template-columns:1fr;gap:1.5rem}
+  .form-submit-wrap{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:560px){
+  nav{padding:.7rem 1rem}
+  .nav-logo-mark{width:50px;height:50px}
+  .page-hero{padding:8.5rem 1.2rem 5rem}
+  .form-section{padding:3rem 1.2rem 5rem}
+  .footer-inner{flex-direction:column;align-items:flex-start}
+}
 </style>
 </head>
 <body>
 
-<!-- MOBILE NAV DRAWER -->
+<!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobileNav">
-  <button class="mobile-nav-close" onclick="toggleNav()" aria-label="Close menu">✕</button>
-  <svg width="56" height="56" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:1rem;opacity:0.8" aria-hidden="true">
+  <button class="mobile-nav-close" onclick="toggleNav()">&#x2715;</button>
+  <svg width="52" height="52" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:.3rem;opacity:.85" aria-hidden="true">
     <circle cx="44" cy="44" r="40" fill="none" stroke="#C9972A" stroke-width="1.4"/>
-    <circle cx="44" cy="44" r="35" fill="none" stroke="rgba(201,151,42,0.25)" stroke-width="0.6"/>
+    <circle cx="44" cy="44" r="35" fill="none" stroke="rgba(201,151,42,.25)" stroke-width=".6"/>
     <path id="mn-top" d="M 9 44 A 35 35 0 0 1 79 44" fill="none"/>
-    <text font-family="'DM Sans',system-ui,sans-serif" font-size="5.8" letter-spacing="1.8" fill="rgba(201,151,42,0.65)">
-      <textPath href="#mn-top" startOffset="50%" text-anchor="middle">SAN FRANCISCO</textPath>
-    </text>
+    <text font-family="'DM Sans',system-ui,sans-serif" font-size="5.8" letter-spacing="1.8" fill="rgba(201,151,42,.7)"><textPath href="#mn-top" startOffset="50%" text-anchor="middle">SAN FRANCISCO</textPath></text>
     <path id="mn-bot" d="M 9 44 A 35 35 0 0 0 79 44" fill="none"/>
-    <text font-family="'DM Sans',system-ui,sans-serif" font-size="5.8" letter-spacing="1.8" fill="rgba(201,151,42,0.65)">
-      <textPath href="#mn-bot" startOffset="50%" text-anchor="middle">CALIFORNIA · EST.</textPath>
-    </text>
-    <text x="44" y="53" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="24" font-weight="600" fill="#C9972A" letter-spacing="0.5">SFT</text>
+    <text font-family="'DM Sans',system-ui,sans-serif" font-size="5.8" letter-spacing="1.8" fill="rgba(201,151,42,.7)"><textPath href="#mn-bot" startOffset="50%" text-anchor="middle">CALIFORNIA &middot; EST.</textPath></text>
+    <text x="44" y="53" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="24" font-weight="600" fill="#C9972A" letter-spacing=".5">SFT</text>
   </svg>
-  <a href="index.html" onclick="toggleNav()">Home</a>
-  <a href="index.html#services" onclick="toggleNav()">Services</a>
-  <a href="index.html#packages" onclick="toggleNav()">Packages</a>
-  <a href="index.html#story" onclick="toggleNav()">Our Story</a>
-  <a href="contact.html" onclick="toggleNav()" style="color:var(--gold-light)">Get a Quote</a>
+  <a href="index.html#serve"    onclick="toggleNav()" data-en="Services"   data-es="Servicios">Services</a>
+  <a href="menu.html"           onclick="toggleNav()" data-en="Menu"       data-es="Men&uacute;">Menu</a>
+  <a href="index.html#packages" onclick="toggleNav()" data-en="Packages"   data-es="Paquetes">Packages</a>
+  <a href="index.html#story"    onclick="toggleNav()" data-en="Our Story"  data-es="Nuestra Historia">Our Story</a>
+  <a href="contact.html"        onclick="toggleNav()" style="color:var(--gold-light)" data-en="Get a Quote" data-es="Cotizaci&oacute;n">Get a Quote</a>
+  <div class="mobile-lang">
+    <button id="mBtnEN" class="active" onclick="setLang('en')">EN</button>
+    <button id="mBtnES" onclick="setLang('es')">ES</button>
+  </div>
 </div>
 
 <!-- NAV -->
 <nav id="mainNav">
-  <a class="nav-logo" href="index.html" aria-label="SF Tapas — Home">
+  <a class="nav-logo" href="index.html" aria-label="SF Tapas">
     <svg class="nav-logo-mark" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <circle cx="44" cy="44" r="40" fill="none" stroke-width="1.4" class="nav-ring-outer"/>
-      <circle cx="44" cy="44" r="35" fill="none" stroke-width="0.6" class="nav-ring-inner"/>
-      <path id="nav-arc-top" d="M 9 44 A 35 35 0 0 1 79 44" fill="none"/>
-      <text font-family="'DM Sans',system-ui,sans-serif" font-size="5.8" font-weight="400" letter-spacing="1.8" class="nav-arc-txt">
-        <textPath href="#nav-arc-top" startOffset="50%" text-anchor="middle">SAN FRANCISCO</textPath>
-      </text>
-      <path id="nav-arc-bot" d="M 9 44 A 35 35 0 0 0 79 44" fill="none"/>
-      <text font-family="'DM Sans',system-ui,sans-serif" font-size="5.8" font-weight="400" letter-spacing="1.8" class="nav-arc-txt">
-        <textPath href="#nav-arc-bot" startOffset="50%" text-anchor="middle">CALIFORNIA · EST.</textPath>
-      </text>
-      <line x1="14" y1="37" x2="31" y2="37" stroke-width="0.5" class="nav-rule"/>
-      <line x1="57" y1="37" x2="74" y2="37" stroke-width="0.5" class="nav-rule"/>
-      <line x1="14" y1="51" x2="31" y2="51" stroke-width="0.5" class="nav-rule"/>
-      <line x1="57" y1="51" x2="74" y2="51" stroke-width="0.5" class="nav-rule"/>
-      <text x="44" y="53" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif"
-            font-size="24" font-weight="600" letter-spacing="0.5" class="nav-sft">SFT</text>
+      <circle cx="44" cy="44" r="35" fill="none" stroke-width=".6" class="nav-ring-inner"/>
+      <path id="nt" d="M 9 44 A 35 35 0 0 1 79 44" fill="none"/>
+      <text font-family="'DM Sans',system-ui,sans-serif" font-size="6.2" font-weight="400" letter-spacing="1.5" class="nav-arc-txt"><textPath href="#nt" startOffset="50%" text-anchor="middle">SAN FRANCISCO</textPath></text>
+      <path id="nb" d="M 9 44 A 35 35 0 0 0 79 44" fill="none"/>
+      <text font-family="'DM Sans',system-ui,sans-serif" font-size="6.2" font-weight="400" letter-spacing="1.5" class="nav-arc-txt"><textPath href="#nb" startOffset="50%" text-anchor="middle">CALIFORNIA &middot; EST.</textPath></text>
+      <line x1="14" y1="37" x2="30" y2="37" stroke-width=".5" class="nav-rule"/>
+      <line x1="58" y1="37" x2="74" y2="37" stroke-width=".5" class="nav-rule"/>
+      <line x1="14" y1="51" x2="30" y2="51" stroke-width=".5" class="nav-rule"/>
+      <line x1="58" y1="51" x2="74" y2="51" stroke-width=".5" class="nav-rule"/>
+      <text x="44" y="53" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="24" font-weight="600" letter-spacing=".5" class="nav-sft">SFT</text>
     </svg>
-    <span class="nav-logo-text">
+    <span class="nav-logo-text" aria-hidden="true">
       <span class="nav-logo-text-top">San Francisco</span>
       <span class="nav-logo-text-bottom">Tapas</span>
     </span>
   </a>
-  <ul class="nav-links">
-    <li><a href="index.html#services">Services</a></li>
-    <li><a href="index.html#experience">Experience</a></li>
-    <li><a href="index.html#packages">Packages</a></li>
-    <li><a href="index.html#story">Our Story</a></li>
-    <li><a href="contact.html" class="nav-cta active">Get a Quote</a></li>
-  </ul>
-  <div class="nav-hamburger" onclick="toggleNav()" aria-label="Open menu" role="button" tabindex="0">
-    <span></span><span></span><span></span>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html#serve"    data-en="Services"  data-es="Servicios">Services</a></li>
+      <li><a href="menu.html"           data-en="Menu"      data-es="Men&uacute;">Menu</a></li>
+      <li><a href="index.html#packages" data-en="Packages"  data-es="Paquetes">Packages</a></li>
+      <li><a href="index.html#story"    data-en="Our Story" data-es="Nuestra Historia">Our Story</a></li>
+    </ul>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button class="lang-btn active" id="btnEN" onclick="setLang('en')" aria-pressed="true">EN</button>
+      <button class="lang-btn"        id="btnES" onclick="setLang('es')" aria-pressed="false">ES</button>
+    </div>
+    <a href="contact.html" class="nav-cta" data-en="Get a Quote" data-es="Cotizaci&oacute;n">Get a Quote</a>
+    <div class="nav-hamburger" onclick="toggleNav()" aria-label="Open menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </nav>
 
-<!-- PAGE HEADER -->
-<header class="page-header">
-  <span class="page-header-eyebrow">Let's Make It Happen</span>
-  <h1>Plan Your <em>Spanish</em><br>Culinary Experience</h1>
-  <p>Tell us about your event and we'll craft a catering experience around your guests, your space, and your vision. We typically respond within a few hours.</p>
+<!-- PAGE HERO -->
+<header class="page-hero">
+  <div class="page-hero-img" aria-hidden="true"></div>
+  <div class="page-hero-overlay" aria-hidden="true"></div>
+  <div class="page-hero-content">
+    <span class="page-hero-eyebrow" data-en="Let&rsquo;s Make It Happen" data-es="Hagamos que Suceda">Let&rsquo;s Make It Happen</span>
+    <h1 data-en="Plan Your <em>Spanish</em><br>Culinary Experience" data-es="Planifique su <em>Experiencia</em><br>Culinaria Espa&ntilde;ola">Plan Your <em>Spanish</em><br>Culinary Experience</h1>
+    <p data-en="Tell us about your event and we&rsquo;ll craft a catering experience tailored to your guests, your space, and your vision. We typically respond within a few hours." data-es="Cu&eacute;ntenos sobre su evento y crearemos una experiencia de catering adaptada a sus invitados, su espacio y su visi&oacute;n. Normalmente respondemos en pocas horas.">Tell us about your event and we&rsquo;ll craft a catering experience tailored to your guests, your space, and your vision. We typically respond within a few hours.</p>
+  </div>
 </header>
 
-<!-- FORM SECTION -->
+<!-- CONTACT INFO STRIP -->
+<div class="contact-aside">
+  <div class="contact-aside-inner">
+    <div class="aside-item">
+      <span class="aside-label" data-en="Email us directly" data-es="Escr&iacute;banos directamente">Email us directly</span>
+      <span class="aside-value"><a href="mailto:info@sftapas.com">info@sftapas.com</a></span>
+      <span class="aside-note" data-en="We monitor this inbox daily" data-es="Revisamos este correo a diario">We monitor this inbox daily</span>
+    </div>
+    <div class="aside-item">
+      <span class="aside-label" data-en="Call or text" data-es="Llame o env&iacute;e un mensaje">Call or text</span>
+      <span class="aside-value"><a href="tel:+14156465306">(415) 646-5306</a></span>
+      <span class="aside-note" data-en="Mon &ndash; Sat, 9am &ndash; 7pm PT" data-es="Lun &ndash; S&aacute;b, 9am &ndash; 7pm PT">Mon &ndash; Sat, 9am &ndash; 7pm PT</span>
+    </div>
+    <div class="aside-item">
+      <span class="aside-label" data-en="Response time" data-es="Tiempo de respuesta">Response time</span>
+      <span class="aside-value" data-en="Within a few hours" data-es="En pocas horas">Within a few hours</span>
+      <span class="aside-note" data-en="We&rsquo;ll follow up by email or phone" data-es="Le contactaremos por correo o tel&eacute;fono">We&rsquo;ll follow up by email or phone</span>
+    </div>
+  </div>
+</div>
+
+<!-- FORM -->
 <section class="form-section">
   <div class="form-wrap">
 
-    <!-- Success banner -->
     <div class="form-banner success" id="bannerSuccess" role="alert" aria-live="polite">
-      <span class="banner-icon">✓</span>
-      <div>
-        <strong>Message sent!</strong> Thank you — we'll be in touch within a few hours at the email address you provided.
-      </div>
+      <span class="banner-icon">&#10003;</span>
+      <div data-en="&lt;strong&gt;Message sent!&lt;/strong&gt; Thank you &mdash; we&rsquo;ll be in touch within a few hours at the email address you provided." data-es="&lt;strong&gt;&iexcl;Mensaje enviado!&lt;/strong&gt; Gracias &mdash; nos pondremos en contacto en pocas horas."><strong>Message sent!</strong> Thank you &mdash; we&rsquo;ll be in touch within a few hours at the email address you provided.</div>
     </div>
-
-    <!-- Error banner -->
     <div class="form-banner failure" id="bannerError" role="alert" aria-live="polite">
       <span class="banner-icon">!</span>
-      <div id="bannerErrorText">Something went wrong. Please check the fields below and try again.</div>
+      <div id="bannerErrorText" data-en="Please fill in all required fields correctly before submitting." data-es="Por favor, complete todos los campos obligatorios correctamente antes de enviar.">Please fill in all required fields correctly before submitting.</div>
     </div>
 
     <form id="contactForm" novalidate>
-
-      <!-- Honeypot — invisible to humans, bots fill it in -->
       <div class="hp-field" aria-hidden="true">
         <label for="website">Leave this blank</label>
         <input type="text" id="website" name="website" tabindex="-1" autocomplete="off"/>
       </div>
 
-      <!-- ── GROUP 1: WHO YOU ARE ── -->
+      <!-- GROUP 1: ABOUT YOU -->
       <div class="form-group-header">
         <span class="form-group-num">01</span>
-        <span class="form-group-label">About You</span>
+        <span class="form-group-label" data-en="About You" data-es="Sobre Usted">About You</span>
       </div>
-
       <div class="field-row cols-2">
         <div class="field">
-          <label for="fullName">Full Name <span class="req" aria-label="required">*</span></label>
-          <input type="text" id="fullName" name="fullName"
-                 placeholder="Jane Smith"
-                 autocomplete="name" required/>
-          <span class="field-error" id="err-fullName">Please enter your full name.</span>
+          <label for="fullName" data-en="Full Name &lt;span class='req'&gt;*&lt;/span&gt;" data-es="Nombre Completo &lt;span class='req'&gt;*&lt;/span&gt;">Full Name <span class="req">*</span></label>
+          <input type="text" id="fullName" name="fullName" placeholder="Jane Smith" autocomplete="name" required/>
+          <span class="field-error" id="err-fullName" data-en="Please enter your full name." data-es="Por favor, ingrese su nombre completo.">Please enter your full name.</span>
         </div>
         <div class="field">
-          <label for="company">Company / Organisation</label>
-          <input type="text" id="company" name="company"
-                 placeholder="Acme Corp (optional)"
-                 autocomplete="organization"/>
+          <label for="company" data-en="Company / Organisation" data-es="Empresa / Organizaci&oacute;n">Company / Organisation</label>
+          <input type="text" id="company" name="company" placeholder="Optional" autocomplete="organization"/>
         </div>
       </div>
-
       <div class="field-row cols-2">
         <div class="field">
-          <label for="email">Email Address <span class="req" aria-label="required">*</span></label>
-          <input type="email" id="email" name="email"
-                 placeholder="jane@example.com"
-                 autocomplete="email" required/>
-          <span class="field-error" id="err-email">Please enter a valid email address.</span>
+          <label for="email" data-en="Email Address &lt;span class='req'&gt;*&lt;/span&gt;" data-es="Correo Electr&oacute;nico &lt;span class='req'&gt;*&lt;/span&gt;">Email Address <span class="req">*</span></label>
+          <input type="email" id="email" name="email" placeholder="jane@example.com" autocomplete="email" required/>
+          <span class="field-error" id="err-email" data-en="Please enter a valid email address." data-es="Por favor, ingrese un correo electr&oacute;nico v&aacute;lido.">Please enter a valid email address.</span>
         </div>
         <div class="field">
-          <label for="phone">Phone Number <span class="req" aria-label="required">*</span></label>
-          <input type="tel" id="phone" name="phone"
-                 placeholder="(415) 555-0000"
-                 autocomplete="tel" required/>
-          <span class="field-error" id="err-phone">Please enter a phone number.</span>
+          <label for="phone" data-en="Phone Number &lt;span class='req'&gt;*&lt;/span&gt;" data-es="Tel&eacute;fono &lt;span class='req'&gt;*&lt;/span&gt;">Phone Number <span class="req">*</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="(415) 555-0000" autocomplete="tel" required/>
+          <span class="field-error" id="err-phone" data-en="Please enter a phone number." data-es="Por favor, ingrese un n&uacute;mero de tel&eacute;fono.">Please enter a phone number.</span>
         </div>
       </div>
-
       <div class="field-row cols-1">
         <div class="field">
-          <label for="howHeard">How did you hear about us?</label>
+          <label for="howHeard" data-en="How did you hear about us?" data-es="&iquest;C&oacute;mo nos conoci&oacute;?">How did you hear about us?</label>
           <select id="howHeard" name="howHeard">
-            <option value="" disabled selected>Select one…</option>
-            <option value="search">Search Engine</option>
-            <option value="social">Social Media</option>
-            <option value="newsletter">Newsletter</option>
-            <option value="word">Word of Mouth</option>
-            <option value="existing">Existing Customer</option>
+            <option value="" disabled selected data-en="Select one&hellip;" data-es="Seleccione una opci&oacute;n&hellip;">Select one&hellip;</option>
+            <option value="search"     data-en="Search Engine"      data-es="Motor de B&uacute;squeda">Search Engine</option>
+            <option value="social"     data-en="Social Media"       data-es="Redes Sociales">Social Media</option>
+            <option value="newsletter" data-en="Newsletter"         data-es="Bolet&iacute;n">Newsletter</option>
+            <option value="word"       data-en="Word of Mouth"      data-es="Boca a Boca">Word of Mouth</option>
+            <option value="existing"   data-en="Existing Customer"  data-es="Cliente Existente">Existing Customer</option>
           </select>
         </div>
       </div>
 
-      <!-- ── GROUP 2: YOUR EVENT ── -->
+      <!-- GROUP 2: YOUR EVENT -->
       <div class="form-group-header">
         <span class="form-group-num">02</span>
-        <span class="form-group-label">Your Event</span>
+        <span class="form-group-label" data-en="Your Event" data-es="Su Evento">Your Event</span>
       </div>
-
       <div class="field-row cols-1">
         <div class="field">
-          <label for="occasion">Type of Occasion <span class="req" aria-label="required">*</span></label>
+          <label for="occasion" data-en="Type of Occasion &lt;span class='req'&gt;*&lt;/span&gt;" data-es="Tipo de Ocasi&oacute;n &lt;span class='req'&gt;*&lt;/span&gt;">Type of Occasion <span class="req">*</span></label>
           <select id="occasion" name="occasion" required>
-            <option value="" disabled selected>Select the type of event…</option>
+            <option value="" disabled selected data-en="Select the type of event&hellip;" data-es="Seleccione el tipo de evento&hellip;">Select the type of event&hellip;</option>
             <option value="Anniversary">Anniversary</option>
             <option value="Baby Shower">Baby Shower</option>
             <option value="Bachelor Party">Bachelor Party</option>
@@ -643,394 +355,269 @@
             <option value="Divorce Party">Divorce Party</option>
             <option value="Family &amp; Friends Reunion">Family &amp; Friends Reunion</option>
             <option value="Holiday Party">Holiday Party</option>
-            <option value="Quinceañera">Quinceañera</option>
+            <option value="Quinceanera">Quincea&ntilde;era</option>
             <option value="Rehearsal Dinner">Rehearsal Dinner</option>
             <option value="Memorial Service Reception">Memorial Service Reception</option>
             <option value="Retirement Party">Retirement Party</option>
             <option value="Wedding">Wedding</option>
-            <option value="Other">Other (please specify)</option>
+            <option value="Other" data-en="Other (please specify)" data-es="Otro (especifique)">Other (please specify)</option>
           </select>
-          <span class="field-error" id="err-occasion">Please select the type of occasion.</span>
-          <!-- Revealed when "Other" is selected -->
+          <span class="field-error" id="err-occasion" data-en="Please select the type of occasion." data-es="Por favor, seleccione el tipo de ocasi&oacute;n.">Please select the type of occasion.</span>
           <div class="other-occasion-wrap" id="otherOccasionWrap">
-            <input type="text" id="otherOccasion" name="otherOccasion"
-                   placeholder="Please describe your occasion…"/>
+            <input type="text" id="otherOccasion" name="otherOccasion" placeholder="Please describe your occasion&hellip;"/>
           </div>
         </div>
       </div>
-
+      <div class="field-row cols-1">
+        <div class="field">
+          <label for="serviceType" data-en="Service Type &lt;span class='req'&gt;*&lt;/span&gt;" data-es="Tipo de Servicio &lt;span class='req'&gt;*&lt;/span&gt;">Service Type <span class="req">*</span></label>
+          <select id="serviceType" name="serviceType" required>
+            <option value="" disabled selected data-en="How would you like us to serve you?" data-es="&iquest;C&oacute;mo le gustar&iacute;a que le sirvi&eacute;ramos?">How would you like us to serve you?</option>
+            <option value="onsite"   data-en="Live On-Site Catering (we cook at your venue)" data-es="Catering en Vivo (cocinamos en su lugar)">Live On-Site Catering (we cook at your venue)</option>
+            <option value="pickup"   data-en="Pickup (you collect from us, ready to serve)" data-es="Recogida (usted recoge, listo para servir)">Pickup (you collect from us, ready to serve)</option>
+            <option value="delivery" data-en="Delivery (we bring it to your door)" data-es="Entrega a domicilio (lo llevamos a su puerta)">Delivery (we bring it to your door)</option>
+          </select>
+          <span class="field-error" id="err-serviceType" data-en="Please select a service type." data-es="Por favor, seleccione un tipo de servicio.">Please select a service type.</span>
+        </div>
+      </div>
       <div class="field-row cols-3">
         <div class="field">
-          <label for="eventDate">Date of Event <span class="req" aria-label="required">*</span></label>
+          <label for="eventDate" data-en="Date of Event &lt;span class='req'&gt;*&lt;/span&gt;" data-es="Fecha del Evento &lt;span class='req'&gt;*&lt;/span&gt;">Date of Event <span class="req">*</span></label>
           <input type="date" id="eventDate" name="eventDate" required/>
-          <span class="field-error" id="err-eventDate">Please select a date.</span>
+          <span class="field-error" id="err-eventDate" data-en="Please select a date." data-es="Por favor, seleccione una fecha.">Please select a date.</span>
         </div>
         <div class="field">
-          <label for="eventTime">Time of Event <span class="req" aria-label="required">*</span></label>
+          <label for="eventTime" data-en="Time of Event &lt;span class='req'&gt;*&lt;/span&gt;" data-es="Hora del Evento &lt;span class='req'&gt;*&lt;/span&gt;">Time of Event <span class="req">*</span></label>
           <input type="time" id="eventTime" name="eventTime" required/>
-          <span class="field-error" id="err-eventTime">Please select a time.</span>
+          <span class="field-error" id="err-eventTime" data-en="Please select a time." data-es="Por favor, seleccione una hora.">Please select a time.</span>
         </div>
         <div class="field">
-          <label for="guestCount">Number of Guests <span class="req" aria-label="required">*</span></label>
-          <input type="number" id="guestCount" name="guestCount"
-                 placeholder="e.g. 40" min="2" required/>
-          <span class="field-error" id="err-guestCount">Please enter a guest count of at least 2.</span>
+          <label for="guestCount" data-en="Number of Guests &lt;span class='req'&gt;*&lt;/span&gt;" data-es="N&uacute;mero de Invitados &lt;span class='req'&gt;*&lt;/span&gt;">Number of Guests <span class="req">*</span></label>
+          <input type="number" id="guestCount" name="guestCount" placeholder="e.g. 40" min="2" required/>
+          <span class="field-error" id="err-guestCount" data-en="Please enter at least 2 guests." data-es="Por favor, ingrese al menos 2 invitados.">Please enter at least 2 guests.</span>
         </div>
       </div>
-
       <div class="field-row cols-1">
         <div class="field">
-          <label for="location">Event Location <span class="req" aria-label="required">*</span></label>
-          <input type="text" id="location" name="location"
-                 placeholder="Full address, venue name, or landmark — e.g. Dolores Park, SF"
-                 autocomplete="street-address" required/>
-          <span class="field-error" id="err-location">Please enter the event location.</span>
+          <label for="location" data-en="Event Location &lt;span class='req'&gt;*&lt;/span&gt;" data-es="Lugar del Evento &lt;span class='req'&gt;*&lt;/span&gt;">Event Location <span class="req">*</span></label>
+          <input type="text" id="location" name="location" placeholder="Full address, venue name, or landmark — e.g. Dolores Park, SF" autocomplete="street-address" required/>
+          <span class="field-error" id="err-location" data-en="Please enter the event location." data-es="Por favor, ingrese el lugar del evento.">Please enter the event location.</span>
         </div>
       </div>
 
-      <!-- ── GROUP 3: BUDGET & DETAILS ── -->
+      <!-- GROUP 3: BUDGET & DETAILS -->
       <div class="form-group-header">
         <span class="form-group-num">03</span>
-        <span class="form-group-label">Budget &amp; Details</span>
+        <span class="form-group-label" data-en="Budget &amp; Details" data-es="Presupuesto y Detalles">Budget &amp; Details</span>
       </div>
-
       <div class="field-row cols-2">
         <div class="field">
-          <label for="budget">Ideal Budget <span class="req" aria-label="required">*</span></label>
+          <label for="budget" data-en="Ideal Budget &lt;span class='req'&gt;*&lt;/span&gt;" data-es="Presupuesto Ideal &lt;span class='req'&gt;*&lt;/span&gt;">Ideal Budget <span class="req">*</span></label>
           <div class="input-prefix">
-            <input type="number" id="budget" name="budget"
-                   placeholder="0.00" min="0" step="50" required/>
+            <input type="number" id="budget" name="budget" placeholder="0.00" min="0" step="50" required/>
           </div>
-          <span class="field-error" id="err-budget">Please enter your ideal budget.</span>
+          <span class="field-error" id="err-budget" data-en="Please enter your ideal budget." data-es="Por favor, ingrese su presupuesto ideal.">Please enter your ideal budget.</span>
         </div>
-        <div class="field" style="justify-content:flex-end;padding-bottom:0.1rem;">
-          <p style="font-size:0.82rem;color:var(--text-muted);font-weight:300;line-height:1.6;">
-            Not sure of your budget yet? Give us a rough number — we'll work with you to find the right fit.
-          </p>
+        <div class="field" style="justify-content:flex-end;padding-bottom:.1rem">
+          <p style="font-size:.82rem;color:var(--text-muted);font-weight:300;line-height:1.65" data-en="Not sure yet? Give us a rough figure &mdash; we&rsquo;ll work with you to find the right fit." data-es="&iquest;No est&aacute; seguro a&uacute;n? D&eacute;nos una cifra aproximada &mdash; trabajaremos con usted para encontrar la opci&oacute;n adecuada.">Not sure yet? Give us a rough figure &mdash; we&rsquo;ll work with you to find the right fit.</p>
         </div>
       </div>
-
       <div class="field-row cols-1">
         <div class="field">
-          <label for="additionalInfo">Additional Information</label>
-          <textarea id="additionalInfo" name="additionalInfo"
-                    placeholder="Dietary restrictions, allergies, preferred service style, special requests, questions — anything that would help us prepare the best proposal for you…"
-                    rows="5"></textarea>
+          <label for="additionalInfo" data-en="Additional Information" data-es="Informaci&oacute;n Adicional">Additional Information</label>
+          <textarea id="additionalInfo" name="additionalInfo" placeholder="Dietary restrictions, allergies, preferred tapas, paella style preferences, special requests, questions — anything that helps us prepare the best proposal for you…" rows="5"></textarea>
         </div>
       </div>
 
-      <!-- ── HUMAN VERIFICATION ── -->
+      <!-- HUMAN CHECK -->
       <div class="human-check">
-        <div class="human-check-title">Quick human check</div>
+        <div class="human-check-title" data-en="Quick human check" data-es="Verificaci&oacute;n r&aacute;pida">Quick human check</div>
         <div class="math-challenge">
           <span class="math-question" id="mathQuestion" aria-live="polite"></span>
           <span style="font-size:1.1rem;color:var(--text-muted)">=</span>
-          <input class="math-input" type="number" id="mathAnswer"
-                 placeholder="?" aria-label="Answer to the math question" autocomplete="off"/>
-          <span class="field-error" id="err-math" style="display:none">That doesn't look right — please try again.</span>
+          <input class="math-input" type="number" id="mathAnswer" placeholder="?" aria-label="Answer to the math question" autocomplete="off"/>
+          <span class="field-error" id="err-math" style="display:none" data-en="That doesn&rsquo;t look right &mdash; please try again." data-es="Eso no parece correcto &mdash; int&eacute;ntelo de nuevo.">That doesn&rsquo;t look right &mdash; please try again.</span>
         </div>
-        <p class="human-check-note">Solve the simple addition above to confirm you're a human — this helps us keep spam out of your inbox too.</p>
+        <p class="human-check-note" data-en="Solve the simple addition to confirm you&rsquo;re a human. This keeps spam out of your inbox too." data-es="Resuelva la suma sencilla para confirmar que es humano. Esto tambi&eacute;n mantiene el spam fuera de su bandeja de entrada.">Solve the simple addition to confirm you&rsquo;re a human. This keeps spam out of your inbox too.</p>
       </div>
 
-      <!-- SUBMIT -->
       <div class="form-submit-wrap">
-        <button type="submit" class="btn-submit" id="submitBtn">Send My Request</button>
-        <p class="form-micro">We typically respond within a few hours · <a href="mailto:info@sftapas.com" style="color:var(--gold);text-decoration:none">info@sftapas.com</a></p>
+        <button type="submit" class="btn-submit" id="submitBtn" data-en="Send My Request" data-es="Enviar mi Solicitud">Send My Request</button>
+        <p class="form-micro" data-en="We typically respond within a few hours &middot; &lt;a href='mailto:info@sftapas.com'&gt;info@sftapas.com&lt;/a&gt;" data-es="Normalmente respondemos en pocas horas &middot; &lt;a href='mailto:info@sftapas.com'&gt;info@sftapas.com&lt;/a&gt;">We typically respond within a few hours &middot; <a href="mailto:info@sftapas.com">info@sftapas.com</a></p>
       </div>
-
     </form>
   </div>
 </section>
-
-<!-- CONTACT INFO STRIP -->
-<div class="contact-aside">
-  <div class="contact-aside-inner">
-    <div class="aside-item">
-      <span class="aside-label">Email us directly</span>
-      <span class="aside-value"><a href="mailto:info@sftapas.com">info@sftapas.com</a></span>
-      <span class="aside-note">We monitor this inbox daily</span>
-    </div>
-    <div class="aside-item">
-      <span class="aside-label">Call or text</span>
-      <span class="aside-value"><a href="tel:+14155550000">(415) 555-0000</a></span>
-      <span class="aside-note">Mon – Sat, 9am – 7pm PT</span>
-    </div>
-    <div class="aside-item">
-      <span class="aside-label">Response time</span>
-      <span class="aside-value">Within a few hours</span>
-      <span class="aside-note">We'll follow up by email or phone</span>
-    </div>
-  </div>
-</div>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">
-      <svg width="32" height="32" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" style="opacity:0.7" aria-hidden="true">
+      <svg width="30" height="30" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" style="opacity:.65" aria-hidden="true">
         <circle cx="44" cy="44" r="40" fill="none" stroke="#C9972A" stroke-width="1.4"/>
-        <circle cx="44" cy="44" r="35" fill="none" stroke="rgba(201,151,42,0.25)" stroke-width="0.6"/>
-        <path id="ft-top" d="M 9 44 A 35 35 0 0 1 79 44" fill="none"/>
-        <text font-family="'DM Sans',system-ui,sans-serif" font-size="5.8" letter-spacing="1.8" fill="rgba(201,151,42,0.65)">
-          <textPath href="#ft-top" startOffset="50%" text-anchor="middle">SAN FRANCISCO</textPath>
-        </text>
-        <path id="ft-bot" d="M 9 44 A 35 35 0 0 0 79 44" fill="none"/>
-        <text font-family="'DM Sans',system-ui,sans-serif" font-size="5.8" letter-spacing="1.8" fill="rgba(201,151,42,0.65)">
-          <textPath href="#ft-bot" startOffset="50%" text-anchor="middle">CALIFORNIA · EST.</textPath>
-        </text>
-        <text x="44" y="53" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="24" font-weight="600" fill="#C9972A" letter-spacing="0.5">SFT</text>
+        <circle cx="44" cy="44" r="35" fill="none" stroke="rgba(201,151,42,.25)" stroke-width=".6"/>
+        <path id="ft" d="M 9 44 A 35 35 0 0 1 79 44" fill="none"/>
+        <text font-family="'DM Sans',system-ui,sans-serif" font-size="5.8" letter-spacing="1.8" fill="rgba(201,151,42,.6)"><textPath href="#ft" startOffset="50%" text-anchor="middle">SAN FRANCISCO</textPath></text>
+        <path id="fb" d="M 9 44 A 35 35 0 0 0 79 44" fill="none"/>
+        <text font-family="'DM Sans',system-ui,sans-serif" font-size="5.8" letter-spacing="1.8" fill="rgba(201,151,42,.6)"><textPath href="#fb" startOffset="50%" text-anchor="middle">CALIFORNIA &middot; EST.</textPath></text>
+        <text x="44" y="53" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="24" font-weight="600" fill="#C9972A" letter-spacing=".5">SFT</text>
       </svg>
-      <span style="font-family:var(--font-display);font-size:1.2rem;font-weight:300;color:rgba(255,255,255,0.6);letter-spacing:0.06em;">SF Tapas</span>
+      <span style="font-family:var(--font-display);font-size:1.15rem;font-weight:300;color:rgba(255,255,255,.55);letter-spacing:.06em">SF Tapas</span>
     </div>
     <ul class="footer-links">
-      <li><a href="index.html#services">Services</a></li>
-      <li><a href="index.html#packages">Packages</a></li>
-      <li><a href="index.html#story">Our Story</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="index.html#serve"    data-en="Services"  data-es="Servicios">Services</a></li>
+      <li><a href="menu.html"           data-en="Menu"      data-es="Men&uacute;">Menu</a></li>
+      <li><a href="index.html#packages" data-en="Packages"  data-es="Paquetes">Packages</a></li>
+      <li><a href="index.html#story"    data-en="Our Story" data-es="Nuestra Historia">Our Story</a></li>
+      <li><a href="contact.html"        data-en="Contact"   data-es="Contacto">Contact</a></li>
     </ul>
-    <div class="footer-copy">© 2025 San Francisco Tapas · Tapas Catering San Francisco · Paella Catering Bay Area</div>
+    <div class="footer-copy">&copy; 2025 San Francisco Tapas &middot; Tapas &amp; Paella Catering Bay Area</div>
   </div>
 </footer>
 
 <script>
-// ── NAV HAMBURGER ──────────────────────────────────
-function toggleNav() {
-  document.getElementById('mobileNav').classList.toggle('open');
-}
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') document.getElementById('mobileNav').classList.remove('open');
-});
+// NAV SCROLL
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>{ nav.classList.toggle('scrolled',window.scrollY>60); },{passive:true});
 
-// ── MATH CAPTCHA ───────────────────────────────────
-let mathA, mathB, mathAnswer;
-function generateMath() {
-  mathA = Math.floor(Math.random() * 9) + 1;
-  mathB = Math.floor(Math.random() * 9) + 1;
-  mathAnswer = mathA + mathB;
-  document.getElementById('mathQuestion').textContent =
-    `What is ${mathA} + ${mathB}?`;
-  document.getElementById('mathAnswer').value = '';
+// MOBILE NAV
+function toggleNav(){ document.getElementById('mobileNav').classList.toggle('open'); }
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') document.getElementById('mobileNav').classList.remove('open'); });
+
+// MATH CAPTCHA
+let mathA,mathB,mathAnswer;
+function generateMath(){
+  mathA=Math.floor(Math.random()*9)+1;
+  mathB=Math.floor(Math.random()*9)+1;
+  mathAnswer=mathA+mathB;
+  document.getElementById('mathQuestion').textContent='What is '+mathA+' + '+mathB+'?';
+  document.getElementById('mathAnswer').value='';
 }
 generateMath();
 
-// ── OCCASION "OTHER" REVEAL ────────────────────────
-document.getElementById('occasion').addEventListener('change', function () {
-  const wrap = document.getElementById('otherOccasionWrap');
-  const other = document.getElementById('otherOccasion');
-  if (this.value === 'Other') {
-    wrap.classList.add('visible');
-    other.required = true;
-  } else {
-    wrap.classList.remove('visible');
-    other.required = false;
-    other.value = '';
-  }
+// OCCASION OTHER
+document.getElementById('occasion').addEventListener('change',function(){
+  const wrap=document.getElementById('otherOccasionWrap');
+  const other=document.getElementById('otherOccasion');
+  if(this.value==='Other'){ wrap.classList.add('visible');other.required=true; }
+  else{ wrap.classList.remove('visible');other.required=false;other.value=''; }
 });
 
-// ── SET MIN DATE TO TODAY ──────────────────────────
-(function () {
-  const today = new Date().toISOString().split('T')[0];
-  document.getElementById('eventDate').min = today;
-})();
+// MIN DATE
+(function(){ document.getElementById('eventDate').min=new Date().toISOString().split('T')[0]; })();
 
-// ── VALIDATION HELPERS ─────────────────────────────
-function markError(id, errId, show) {
-  const el  = document.getElementById(id);
-  const err = document.getElementById(errId);
-  if (!el || !err) return;
-  el.classList.toggle('error', show);
-  err.classList.toggle('visible', show);
+// VALIDATION
+function markError(id,errId,show){
+  const el=document.getElementById(id);const err=document.getElementById(errId);
+  if(!el||!err) return;
+  el.classList.toggle('error',show);err.classList.toggle('visible',show);
 }
-
-function validateEmail(val) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
-}
-
-function validateForm() {
-  let ok = true;
-
-  // Full name
-  const name = document.getElementById('fullName').value.trim();
-  markError('fullName', 'err-fullName', !name);
-  if (!name) ok = false;
-
-  // Email
-  const email = document.getElementById('email').value.trim();
-  const emailOk = validateEmail(email);
-  markError('email', 'err-email', !emailOk);
-  if (!emailOk) ok = false;
-
-  // Phone
-  const phone = document.getElementById('phone').value.trim();
-  markError('phone', 'err-phone', !phone);
-  if (!phone) ok = false;
-
-  // Occasion
-  const occasion = document.getElementById('occasion').value;
-  markError('occasion', 'err-occasion', !occasion);
-  if (!occasion) ok = false;
-
-  // Date
-  const date = document.getElementById('eventDate').value;
-  markError('eventDate', 'err-eventDate', !date);
-  if (!date) ok = false;
-
-  // Time
-  const time = document.getElementById('eventTime').value;
-  markError('eventTime', 'err-eventTime', !time);
-  if (!time) ok = false;
-
-  // Guest count
-  const guests = parseInt(document.getElementById('guestCount').value, 10);
-  const guestsOk = !isNaN(guests) && guests >= 2;
-  markError('guestCount', 'err-guestCount', !guestsOk);
-  if (!guestsOk) ok = false;
-
-  // Location
-  const loc = document.getElementById('location').value.trim();
-  markError('location', 'err-location', !loc);
-  if (!loc) ok = false;
-
-  // Budget
-  const budget = document.getElementById('budget').value.trim();
-  markError('budget', 'err-budget', !budget);
-  if (!budget) ok = false;
-
-  // Math captcha
-  const ans = parseInt(document.getElementById('mathAnswer').value, 10);
-  const mathOk = ans === mathAnswer;
-  const mathInput = document.getElementById('mathAnswer');
-  const mathErr   = document.getElementById('err-math');
-  mathInput.classList.toggle('error', !mathOk);
-  mathErr.style.display = mathOk ? 'none' : 'block';
-  if (!mathOk) ok = false;
-
+function validateEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+function validateForm(){
+  let ok=true;
+  const name=document.getElementById('fullName').value.trim();
+  markError('fullName','err-fullName',!name);if(!name) ok=false;
+  const email=document.getElementById('email').value.trim();
+  const eOk=validateEmail(email);markError('email','err-email',!eOk);if(!eOk) ok=false;
+  const phone=document.getElementById('phone').value.trim();
+  markError('phone','err-phone',!phone);if(!phone) ok=false;
+  const occ=document.getElementById('occasion').value;
+  markError('occasion','err-occasion',!occ);if(!occ) ok=false;
+  const svc=document.getElementById('serviceType').value;
+  markError('serviceType','err-serviceType',!svc);if(!svc) ok=false;
+  const date=document.getElementById('eventDate').value;
+  markError('eventDate','err-eventDate',!date);if(!date) ok=false;
+  const time=document.getElementById('eventTime').value;
+  markError('eventTime','err-eventTime',!time);if(!time) ok=false;
+  const guests=parseInt(document.getElementById('guestCount').value,10);
+  const gOk=!isNaN(guests)&&guests>=2;markError('guestCount','err-guestCount',!gOk);if(!gOk) ok=false;
+  const loc=document.getElementById('location').value.trim();
+  markError('location','err-location',!loc);if(!loc) ok=false;
+  const budget=document.getElementById('budget').value.trim();
+  markError('budget','err-budget',!budget);if(!budget) ok=false;
+  const ans=parseInt(document.getElementById('mathAnswer').value,10);
+  const mOk=ans===mathAnswer;
+  document.getElementById('mathAnswer').classList.toggle('error',!mOk);
+  document.getElementById('err-math').style.display=mOk?'none':'block';
+  if(!mOk) ok=false;
   return ok;
 }
 
-// ── REAL-TIME CLEAR ON INPUT ───────────────────────
-['fullName','email','phone','occasion','eventDate','eventTime',
- 'guestCount','location','budget'].forEach(id => {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.addEventListener('input', () => {
-    el.classList.remove('error');
-    const errEl = document.getElementById('err-' + id);
-    if (errEl) errEl.classList.remove('visible');
-  });
+// REAL-TIME CLEAR
+['fullName','email','phone','occasion','serviceType','eventDate','eventTime','guestCount','location','budget'].forEach(id=>{
+  const el=document.getElementById(id);if(!el) return;
+  el.addEventListener('input',()=>{ el.classList.remove('error');const e=document.getElementById('err-'+id);if(e) e.classList.remove('visible'); });
 });
-document.getElementById('mathAnswer').addEventListener('input', () => {
+document.getElementById('mathAnswer').addEventListener('input',()=>{
   document.getElementById('mathAnswer').classList.remove('error');
-  document.getElementById('err-math').style.display = 'none';
+  document.getElementById('err-math').style.display='none';
 });
 
-// ── FORM SUBMISSION ────────────────────────────────
-document.getElementById('contactForm').addEventListener('submit', async function (e) {
+// FORM SUBMIT
+document.getElementById('contactForm').addEventListener('submit',async function(e){
   e.preventDefault();
-
-  // Hide banners
   document.getElementById('bannerSuccess').classList.remove('visible');
   document.getElementById('bannerError').classList.remove('visible');
-
-  // Honeypot check — if filled, silently pretend success
-  if (document.getElementById('website').value) {
-    showSuccess(); return;
-  }
-
-  if (!validateForm()) {
+  if(document.getElementById('website').value){ showSuccess();return; }
+  if(!validateForm()){
     document.getElementById('bannerError').classList.add('visible');
-    document.getElementById('bannerErrorText').textContent =
-      'Please fill in all required fields correctly before submitting.';
-    document.getElementById('bannerError').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    document.getElementById('bannerError').scrollIntoView({behavior:'smooth',block:'center'});
     return;
   }
+  const occ=document.getElementById('occasion').value;
+  const otherOcc=document.getElementById('otherOccasion').value.trim();
+  const occFinal=(occ==='Other'&&otherOcc)?'Other — '+otherOcc:occ;
+  const svc=document.getElementById('serviceType').value;
+  const svcLabel={'onsite':'Live On-Site Catering','pickup':'Pickup','delivery':'Delivery'};
+  const btn=document.getElementById('submitBtn');
+  btn.disabled=true;btn.textContent='Sending\u2026';
+  try{
+    /* CONNECT EMAIL SERVICE HERE
+       Option A (easiest — Formspree, free tier):
+         const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+           method:'POST', headers:{'Accept':'application/json'},
+           body: new FormData(document.getElementById('contactForm'))
+         });
+         if(!res.ok) throw new Error('Send failed');
 
-  // Gather data
-  const occasion   = document.getElementById('occasion').value;
-  const otherOcc   = document.getElementById('otherOccasion').value.trim();
-  const occasionFinal = (occasion === 'Other' && otherOcc) ? `Other — ${otherOcc}` : occasion;
-
-  const payload = {
-    to:      'info@sftapas.com',
-    subject: `New Catering Enquiry — ${occasionFinal} on ${document.getElementById('eventDate').value}`,
-    body: `
-NEW CATERING ENQUIRY — SF TAPAS WEBSITE
-========================================
-
-ABOUT THE CLIENT
-Name:     ${document.getElementById('fullName').value.trim()}
-Company:  ${document.getElementById('company').value.trim() || '—'}
-Email:    ${document.getElementById('email').value.trim()}
-Phone:    ${document.getElementById('phone').value.trim()}
-How heard: ${document.getElementById('howHeard').value || '—'}
-
-EVENT DETAILS
-Occasion: ${occasionFinal}
-Date:     ${document.getElementById('eventDate').value}
-Time:     ${document.getElementById('eventTime').value}
-Guests:   ${document.getElementById('guestCount').value}
-Location: ${document.getElementById('location').value.trim()}
-
-BUDGET & NOTES
-Budget:   $${document.getElementById('budget').value}
-Notes:    ${document.getElementById('additionalInfo').value.trim() || '—'}
-    `.trim()
-  };
-
-  // ── Disable button & show loading state
-  const btn = document.getElementById('submitBtn');
-  btn.disabled = true;
-  btn.textContent = 'Sending…';
-
-  try {
-    /*
-      EMAIL SENDING NOTE:
-      ───────────────────
-      Pure HTML pages cannot send email directly from the browser.
-      Choose ONE of these three approaches and replace this block:
-
-      OPTION A — Formspree (free tier, easiest, no backend needed):
-        1. Sign up at formspree.io
-        2. Create a form pointed at info@sftapas.com
-        3. Replace the fetch below with:
-           const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-             method: 'POST',
-             headers: { 'Accept': 'application/json' },
-             body: new FormData(document.getElementById('contactForm'))
-           });
-
-      OPTION B — EmailJS (free tier, client-side only):
-        See emailjs.com — add their SDK and call emailjs.send()
-
-      OPTION C — Your own backend / Odoo webhook:
-        POST to your server endpoint with payload below.
-
-      For now, this simulates a successful submission so you can
-      preview the UX flow. Remove the setTimeout block when you
-      connect a real email service.
+       Option B (EmailJS): see emailjs.com
+       Option C: POST to your own backend or Odoo webhook
     */
-    await new Promise(resolve => setTimeout(resolve, 1200)); // ← remove when live
-    // const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', { ... });
-    // if (!res.ok) throw new Error('Network response not ok');
-
+    await new Promise(r=>setTimeout(r,1200)); // ← remove when live
     showSuccess();
-  } catch (err) {
-    btn.disabled = false;
-    btn.textContent = 'Send My Request';
+  } catch(err){
+    btn.disabled=false;btn.textContent='Send My Request';
     document.getElementById('bannerError').classList.add('visible');
-    document.getElementById('bannerErrorText').textContent =
-      'We couldn\'t send your message right now. Please email us directly at info@sftapas.com or try again.';
-    document.getElementById('bannerError').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    document.getElementById('bannerErrorText').textContent="We couldn't send your message right now. Please email us directly at info@sftapas.com or try again.";
+    document.getElementById('bannerError').scrollIntoView({behavior:'smooth',block:'center'});
   }
 });
 
-function showSuccess() {
-  document.getElementById('contactForm').style.display = 'none';
-  const banner = document.getElementById('bannerSuccess');
-  banner.classList.add('visible');
-  banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+function showSuccess(){
+  document.getElementById('contactForm').style.display='none';
+  const b=document.getElementById('bannerSuccess');
+  b.classList.add('visible');
+  b.scrollIntoView({behavior:'smooth',block:'center'});
 }
-</script>
 
+// BILINGUAL
+function setLang(l){
+  ['btnEN','btnES','mBtnEN','mBtnES'].forEach(id=>{
+    const b=document.getElementById(id);
+    if(b) b.classList.toggle('active',id.toLowerCase().includes(l));
+  });
+  document.getElementById('btnEN').setAttribute('aria-pressed',l==='en');
+  document.getElementById('btnES').setAttribute('aria-pressed',l==='es');
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    const v=el.getAttribute('data-'+l);
+    if(v!==null) el.innerHTML=v;
+  });
+  // Regenerate math question text in right language
+  const q=document.getElementById('mathQuestion');
+  if(q) q.textContent=(l==='es'?'¿Cuánto es ':'What is ')+mathA+' + '+mathB+(l==='es'?'?':'?');
+}
+(function(){ const bl=(navigator.language||'en').slice(0,2).toLowerCase(); if(bl==='es') setLang('es'); })();
+</script>
 </body>
 </html>
